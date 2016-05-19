@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace trellabit.net
 {
@@ -10,6 +11,9 @@ namespace trellabit.net
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("{0} {1}",
+                Assembly.GetExecutingAssembly().GetName().Name,
+                Assembly.GetExecutingAssembly().GetName().Version);
         }
     }
 }
