@@ -18,7 +18,6 @@ namespace trellabit.net
                 Assembly.GetExecutingAssembly().GetName().Name,
                 Assembly.GetExecutingAssembly().GetName().Version);
 
-
             Console.WriteLine("\nPress any key to exit ...");
             Console.ReadKey();
 
