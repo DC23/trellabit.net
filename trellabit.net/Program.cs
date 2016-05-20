@@ -5,13 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using NLog;
-using System.IO;
+using MadMilkman.Ini;
 
 namespace trellabit.net
 {
     class Program
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
+
+        void WriteDefaultIniFile()
+        {
+
+
+        }
+
         static void Main(string[] args)
         {
             logger.Info("{0} {1} online",
