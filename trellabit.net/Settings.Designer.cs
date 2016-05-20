@@ -22,5 +22,14 @@ namespace trellabit.net {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("trellabit.ini")]
+        public string IniFileName {
+            get {
+                return ((string)(this["IniFileName"]));
+            }
+        }
     }
 }
