@@ -18,7 +18,8 @@ namespace trellabit.net
                 Assembly.GetExecutingAssembly().GetName().Name,
                 Assembly.GetExecutingAssembly().GetName().Version);
 
-
+            Console.WriteLine("\nPress any key to close ...");
+            Console.ReadKey();
 
             logger.Info("{0} {1} offline",
                 Assembly.GetExecutingAssembly().GetName().Name,
