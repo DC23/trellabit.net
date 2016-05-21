@@ -41,6 +41,10 @@
       <HintPath>..\packages\MadMilkman.Ini.1.0.6.0\lib\net20\MadMilkman.Ini.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Manatee.Trello, Version=0.0.0.0, Culture=neutral, PublicKeyToken=f502fcc17fc907d6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Manatee.Trello.1.10.0\lib\net45\Manatee.Trello.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.165\lib\net45\Microsoft.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
