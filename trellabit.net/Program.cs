@@ -35,7 +35,12 @@ namespace trellabit.net
                     Exit(1);
                 }
 
-                // Do something
+                // what happens with an expired token? An exception I presume...
+                trello.Authorize(userOptions.TrelloToken);
+
+                Member me = trello.Members.Me();
+                var myCards = trello.Cards.ForMe();
+                var myBoards = trello.Boards.ForMe();
             }
             else
             {
