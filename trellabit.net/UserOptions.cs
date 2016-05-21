@@ -49,6 +49,18 @@ namespace trellabit.net
                 return false;
             }
 
+            //if (!IniFile.Sections["Trello"].Keys.Contains("auth_token"))
+            //{ 
+            //    logger.Warn("Trello auth_token missing");
+            //    return false;
+            //}
+
+            //if (String.IsNullOrEmpty(IniFile.Sections["Trello"].Keys["auth_token"].Value))
+            //{ 
+            //    logger.Warn("Trello auth_token invalid");
+            //    return false;
+            //}
+
             if (!IniFile.Sections.Contains("Habitica"))
             { 
                 logger.Warn("Habitica section missing");
@@ -67,7 +79,9 @@ namespace trellabit.net
             IniSection trelloSection = IniFile.Sections.Add("Trello");
             trelloSection.TrailingComment.Text = " Trello Authentication";
             IniKey trelloApiKey = trelloSection.Keys.Add("API_Key", "<your_api_key>");
-            trelloApiKey.LeadingComment.Text = " Visit https://trello.com/1/appKey/generate to get your Trello API key\n";
+            trelloApiKey.LeadingComment.Text = " Visit https://trello.com/1/appKey/generate to get your Trello API key";
+            IniKey trelloAuthToken = trelloSection.Keys.Add("auth_token", "");
+            trelloAuthToken.LeadingComment.Text = " Paste your authorisation token here";
 
             // Habitica section
             IniSection habiticaSection = IniFile.Sections.Add("Habitica");
@@ -79,5 +93,8 @@ namespace trellabit.net
         public bool Valid { get; private set; } = false;
         public FileInfo SettingsFileInfo { get; private set; }
         private IniFile IniFile { get; set; } = new IniFile();
+
+        public string TrelloApiKey { get { return IniFile.Sections["Trello"].Keys["API_Key"].Value; } }
+        public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value; } }
     }
 }

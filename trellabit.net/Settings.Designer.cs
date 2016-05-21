@@ -31,5 +31,34 @@ namespace trellabit.net {
                 return ((string)(this["IniFileName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("You must authorise this application to access your Trello account. Please paste t" +
+            "he token you receive into the application ini file and then restart this applica" +
+            "tion.")]
+        public string TrelloAuthRequest {
+            get {
+                return ((string)(this["TrelloAuthRequest"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Trello Authorisation Required")]
+        public string TrelloAuthRequestCaption {
+            get {
+                return ((string)(this["TrelloAuthRequestCaption"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("trellabit.net")]
+        public string AppName {
+            get {
+                return ((string)(this["AppName"]));
+            }
+        }
     }
 }

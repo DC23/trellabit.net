@@ -7,6 +7,7 @@ using System.Reflection;
 using NLog;
 using MadMilkman.Ini;
 using System.IO;
+using TrelloNet;
 
 namespace trellabit.net
 {
@@ -16,19 +17,25 @@ namespace trellabit.net
 
         static void Main(string[] args)
         {
-            logger.Info("{0} {1} online",
-                Assembly.GetExecutingAssembly().GetName().Name,
+            logger.Info("Version {0} online",
                 Assembly.GetExecutingAssembly().GetName().Version);
 
             UserOptions userOptions = new UserOptions(
                 new FileInfo(Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), 
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     Settings.Default.IniFileName)));
 
             if (userOptions.Valid)
             {
+                ITrello trello = new Trello(userOptions.TrelloApiKey);
 
-                // Normal program flow here
+                if (String.IsNullOrEmpty(userOptions.TrelloToken))
+                {
+                    GetAuthorisationToken(trello);
+                    Exit(1);
+                }
+
+                // Do something
             }
             else
             {
@@ -39,7 +46,25 @@ namespace trellabit.net
             Exit();
         }
 
-        static void Exit()
+        private static void GetAuthorisationToken(ITrello trello)
+        {
+            var url = trello.GetAuthorizationUrl(Settings.Default.AppName, Scope.ReadWrite, Expiration.OneDay);
+            if (System.Windows.Forms.MessageBox.Show(
+                Settings.Default.TrelloAuthRequest,
+                Settings.Default.TrelloAuthRequestCaption,
+                System.Windows.Forms.MessageBoxButtons.OKCancel,
+                System.Windows.Forms.MessageBoxIcon.Asterisk) == System.Windows.Forms.DialogResult.OK)
+            {
+                logger.Info("Getting Trello authorisation token.");
+                System.Diagnostics.Process.Start(url.ToString());
+            }
+            else
+            {
+                logger.Warn("Trello authorisation cancelled.");
+            }
+        }
+
+        static void Exit(int code = 0)
         {
             Console.WriteLine("\nPress any key to exit ...");
             Console.ReadKey();
@@ -47,6 +72,8 @@ namespace trellabit.net
             logger.Info("{0} {1} offline",
                 Assembly.GetExecutingAssembly().GetName().Name,
                 Assembly.GetExecutingAssembly().GetName().Version);
+
+            Environment.Exit(code);
         }
     }
 }
