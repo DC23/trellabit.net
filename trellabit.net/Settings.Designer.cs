@@ -60,5 +60,15 @@ namespace trellabit.net {
                 return ((string)(this["AppName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://trello.com/1/connect?key={0}&name={1}&response_type=token&scope=read,writ" +
+            "e&expiration={2}")]
+        public string TrelloAuthUrl {
+            get {
+                return ((string)(this["TrelloAuthUrl"]));
+            }
+        }
     }
 }

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using NLog;
-using MadMilkman.Ini;
 using System.IO;
-using TrelloNet;
+using Manatee.Trello;
 
 namespace trellabit.net
 {
@@ -25,22 +20,28 @@ namespace trellabit.net
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     Settings.Default.IniFileName)));
 
+            if (String.IsNullOrEmpty(userOptions.TrelloApiKey))
+            {
+                logger.Warn("You must paste your Trello API key into the ini file.");
+                Exit(2);
+            }
+
+            if (String.IsNullOrEmpty(userOptions.TrelloToken))
+            {
+                GetAuthorisationToken(userOptions.TrelloApiKey);
+                Exit(1);
+            }
+
             if (userOptions.Valid)
             {
-                ITrello trello = new Trello(userOptions.TrelloApiKey);
-
-                if (String.IsNullOrEmpty(userOptions.TrelloToken))
-                {
-                    GetAuthorisationToken(trello);
-                    Exit(1);
-                }
-
-                // what happens with an expired token? An exception I presume...
-                trello.Authorize(userOptions.TrelloToken);
-
-                Member me = trello.Members.Me();
-                var myCards = trello.Cards.ForMe();
-                var myBoards = trello.Boards.ForMe();
+                // quick test of Manatee hacked directly into the housekeeping code
+                //var serializer = new ManateeSerializer();
+                //TrelloConfiguration.Serializer = serializer;
+                //TrelloConfiguration.Deserializer = serializer;
+                //TrelloConfiguration.JsonFactory = new ManateeFactory();
+                //TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
+                //TrelloAuthorization.Default.AppKey = "[your application key]";
+                //TrelloAuthorization.Default.UserToken = "[your user token]";
             }
             else
             {
@@ -51,17 +52,24 @@ namespace trellabit.net
             Exit();
         }
 
-        private static void GetAuthorisationToken(ITrello trello)
+        private static void GetAuthorisationToken(string trelloApiKey)
         {
-            var url = trello.GetAuthorizationUrl(Settings.Default.AppName, Scope.ReadWrite, Expiration.OneDay);
+            Uri trelloAuthUri = new Uri(
+                String.Format(Settings.Default.TrelloAuthUrl,
+                    trelloApiKey,
+                    Settings.Default.AppName,
+                    "1day"));
+            // Expiry options: 1hour, 1day, 30days, never
+
             if (System.Windows.Forms.MessageBox.Show(
                 Settings.Default.TrelloAuthRequest,
                 Settings.Default.TrelloAuthRequestCaption,
                 System.Windows.Forms.MessageBoxButtons.OKCancel,
                 System.Windows.Forms.MessageBoxIcon.Asterisk) == System.Windows.Forms.DialogResult.OK)
             {
+                // TODO: can I use a different method to make the web request directly, capture the token and write it to the ini file?
                 logger.Info("Getting Trello authorisation token.");
-                System.Diagnostics.Process.Start(url.ToString());
+                System.Diagnostics.Process.Start(trelloAuthUri.ToString());
             }
             else
             {
