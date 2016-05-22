@@ -1,8 +1,11 @@
-﻿using System;
-using System.Reflection;
+﻿using Manatee.Trello;
+using Manatee.Trello.ManateeJson;
+using Manatee.Trello.WebApi;
 using NLog;
+using System;
 using System.IO;
-using Manatee.Trello;
+using System.Linq;
+using System.Reflection;
 
 namespace trellabit.net
 {
@@ -35,13 +38,21 @@ namespace trellabit.net
             if (userOptions.Valid)
             {
                 // quick test of Manatee hacked directly into the housekeeping code
-                //var serializer = new ManateeSerializer();
-                //TrelloConfiguration.Serializer = serializer;
-                //TrelloConfiguration.Deserializer = serializer;
-                //TrelloConfiguration.JsonFactory = new ManateeFactory();
-                //TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
-                //TrelloAuthorization.Default.AppKey = "[your application key]";
-                //TrelloAuthorization.Default.UserToken = "[your user token]";
+                var serializer = new ManateeSerializer();
+                TrelloConfiguration.Serializer = serializer;
+                TrelloConfiguration.Deserializer = serializer;
+                TrelloConfiguration.JsonFactory = new ManateeFactory();
+                TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
+                TrelloAuthorization.Default.AppKey = userOptions.TrelloApiKey;
+                TrelloAuthorization.Default.UserToken = userOptions.TrelloToken;
+                foreach (var board in Member.Me.Boards)
+                {
+                    Console.WriteLine(
+                        String.Format("{0}: Archived: {1}, Cards: {2}",
+                            board.Name,
+                            board.IsClosed,
+                            board.Cards.Count()));
+                }
             }
             else
             {

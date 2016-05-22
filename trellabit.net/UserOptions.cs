@@ -1,5 +1,5 @@
-﻿using NLog;
-using MadMilkman.Ini;
+﻿using MadMilkman.Ini;
+using NLog;
 using System.IO;
 
 namespace trellabit.net
