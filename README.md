@@ -1,9 +1,15 @@
 # trellabit.net
-Experimental .Net integration between Trello and Habitica.
+Experimental .Net integration between Trello and Habitica. The goal is to provide both a command-line interface to useful batch operations (such as batch application of labels), and synchronisation between Trello and Habitica.
 
-## Dependencies
+# Key Dependencies
 
 * [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client)
-* [Trello.Net](https://github.com/dillenmeister/Trello.NET)
+* [Manatee.Trello](https://bitbucket.org/gregsdennis/manatee.trello)
+* [MadMilkman.Ini](https://github.com/MarioZ/MadMilkman.Ini)
+* [NLog](http://nlog-project.org/)
 
-Both can be installed through NuGet/Package Manager.
+# Development
+This project has been tested on the following platforms:
+
+* Visual Studio 2015 Community Edition, on both Windows 10 and Windows 7.
+* Linux with Monodevelop X.X.
