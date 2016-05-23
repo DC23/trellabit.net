@@ -38,8 +38,7 @@ namespace trellabit.net
 					return false;
 				}
 
-				var key = IniFile.Sections["Trello"].Keys["API_Key"].Value;
-				if (key == "<your_api_key>" || string.IsNullOrEmpty(key))
+				if (TrelloApiKey == "<your_api_key>" || string.IsNullOrEmpty(TrelloApiKey))
 				{ 
 					logger.Warn("Trello API_Key invalid");
 					return false;
@@ -65,8 +64,7 @@ namespace trellabit.net
 					return false;
 				}
 
-				var token = IniFile.Sections["Trello"].Keys["auth_token"].Value;
-				if (string.IsNullOrEmpty(token))
+				if (string.IsNullOrEmpty(TrelloToken))
 				{ 
 					logger.Warn("Trello auth_token invalid");
 					return false;
@@ -125,8 +123,8 @@ namespace trellabit.net
 
 		private IniFile IniFile { get; set; } = new IniFile();
 
-		public string TrelloApiKey { get { return IniFile.Sections["Trello"].Keys["API_Key"].Value; } }
+		public string TrelloApiKey { get { return IniFile.Sections["Trello"].Keys["API_Key"].Value.Trim(); } }
 
-		public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value; } }
+		public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value.Trim(); } }
 	}
 }
