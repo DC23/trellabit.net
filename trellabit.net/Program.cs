@@ -23,13 +23,13 @@ namespace trellabit.net
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     Settings.Default.IniFileName)));
 
-            if (String.IsNullOrEmpty(userOptions.TrelloApiKey))
+			if (!userOptions.IsTrelloApiKeyValid)
             {
                 logger.Warn("You must paste your Trello API key into the ini file.");
                 Exit(2);
             }
 
-            if (String.IsNullOrEmpty(userOptions.TrelloToken))
+			if (!userOptions.IsTrelloTokenValid)
             {
                 GetAuthorisationToken(userOptions.TrelloApiKey);
                 Exit(1);

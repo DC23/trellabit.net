@@ -4,92 +4,126 @@ using System.IO;
 
 namespace trellabit.net
 {
-    internal class UserOptions
-    {
-        static Logger logger = LogManager.GetCurrentClassLogger();
+	internal class UserOptions
+	{
+		static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public UserOptions(FileInfo settingsFileInfo)
-        {
-            SettingsFileInfo = settingsFileInfo;
+		public UserOptions(FileInfo settingsFileInfo)
+		{
+			SettingsFileInfo = settingsFileInfo;
 
-            if (SettingsFileInfo.Exists)
-            {
-                IniFile.Load(SettingsFileInfo.FullName);
-                Valid = Validate();
-            }
-            else
-            {
-                WriteDefaultIniFile();
-                Valid = false;
-            }
-        }
+			if (SettingsFileInfo.Exists)
+			{
+				IniFile.Load(SettingsFileInfo.FullName);
+			}
+			else
+			{
+				WriteDefaultIniFile();
+			}
+		}
 
-        private bool Validate()
-        {
-            if (!IniFile.Sections.Contains("Trello"))
-            {
-                logger.Warn("Trello section missing");
-                return false;
-            }
+		public bool IsTrelloApiKeyValid
+		{
+			get
+			{
+				if (!IniFile.Sections.Contains("Trello"))
+				{
+					logger.Warn("Trello section missing");
+					return false;
+				}
 
-            if (!IniFile.Sections["Trello"].Keys.Contains("API_Key"))
-            { 
-                logger.Warn("Trello API_Key missing");
-                return false;
-            }
+				if (!IniFile.Sections["Trello"].Keys.Contains("API_Key"))
+				{ 
+					logger.Warn("Trello API_Key missing");
+					return false;
+				}
 
-            if (IniFile.Sections["Trello"].Keys["API_Key"].Value == "<your_api_key>")
-            { 
-                logger.Warn("Trello API_Key invalid");
-                return false;
-            }
+				var key = IniFile.Sections["Trello"].Keys["API_Key"].Value;
+				if (key == "<your_api_key>" || string.IsNullOrEmpty(key))
+				{ 
+					logger.Warn("Trello API_Key invalid");
+					return false;
+				}
 
-            //if (!IniFile.Sections["Trello"].Keys.Contains("auth_token"))
-            //{ 
-            //    logger.Warn("Trello auth_token missing");
-            //    return false;
-            //}
+				return true;
+			}
+		}
 
-            //if (String.IsNullOrEmpty(IniFile.Sections["Trello"].Keys["auth_token"].Value))
-            //{ 
-            //    logger.Warn("Trello auth_token invalid");
-            //    return false;
-            //}
+		public bool IsTrelloTokenValid
+		{
+			get
+			{ 
+				if (!IniFile.Sections.Contains("Trello"))
+				{
+					logger.Warn("Trello section missing");
+					return false;
+				}
 
-            if (!IniFile.Sections.Contains("Habitica"))
-            { 
-                logger.Warn("Habitica section missing");
-                return false;
-            }
+				if (!IniFile.Sections["Trello"].Keys.Contains("auth_token"))
+				{ 
+					logger.Warn("Trello auth_token missing");
+					return false;
+				}
 
-            return true;
-        }
+				var token = IniFile.Sections["Trello"].Keys["auth_token"].Value;
+				if (string.IsNullOrEmpty(token))
+				{ 
+					logger.Warn("Trello auth_token invalid");
+					return false;
+				}
 
-        void WriteDefaultIniFile()
-        {
-            logger.Warn(@"User options file '{0}' not found. A default has been generated. You will need to enter your authentication keys as described in the README.",
-                SettingsFileInfo.FullName);
+				return true;
+			}
+		}
 
-            // Trello section
-            IniSection trelloSection = IniFile.Sections.Add("Trello");
-            trelloSection.TrailingComment.Text = " Trello Authentication";
-            IniKey trelloApiKey = trelloSection.Keys.Add("API_Key", "<your_api_key>");
-            trelloApiKey.LeadingComment.Text = " Visit https://trello.com/1/appKey/generate to get your Trello API key";
-            IniKey trelloAuthToken = trelloSection.Keys.Add("auth_token", "");
-            trelloAuthToken.LeadingComment.Text = " Paste your authorisation token here";
+		public bool IsHabiticaApiKeyValid
+		{
+			get
+			{
+				if (!IniFile.Sections.Contains("Habitica"))
+				{ 
+					logger.Warn("Habitica section missing");
+					return false;
+				}
 
-            // Habitica section
-            IniSection habiticaSection = IniFile.Sections.Add("Habitica");
-            habiticaSection.TrailingComment.Text = " Habitica Authentication";
+				return true;
+			}
+		}
 
-            IniFile.Save(SettingsFileInfo.FullName);
-        }
+		public bool Valid
+		{
+			get
+			{
+				return IsTrelloApiKeyValid && IsTrelloTokenValid && IsHabiticaApiKeyValid;
+			}
+		}
 
-        public bool Valid { get; private set; } = false;
-        public FileInfo SettingsFileInfo { get; private set; }
-        private IniFile IniFile { get; set; } = new IniFile();
+		void WriteDefaultIniFile()
+		{
+			logger.Warn(@"User options file '{0}' not found. A default has been generated. You will need to enter your authentication keys as described in the README.",
+				SettingsFileInfo.FullName);
 
-        public string TrelloApiKey { get { return IniFile.Sections["Trello"].Keys["API_Key"].Value; } }
-        public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value; } }
-    }
+			// Trello section
+			IniSection trelloSection = IniFile.Sections.Add("Trello");
+			trelloSection.TrailingComment.Text = " Trello Authentication";
+			IniKey trelloApiKey = trelloSection.Keys.Add("API_Key", "<your_api_key>");
+			trelloApiKey.LeadingComment.Text = " Visit https://trello.com/1/appKey/generate to get your Trello API key";
+			IniKey trelloAuthToken = trelloSection.Keys.Add("auth_token", "");
+			trelloAuthToken.LeadingComment.Text = " Paste your authorisation token here";
+
+			// Habitica section
+			IniSection habiticaSection = IniFile.Sections.Add("Habitica");
+			habiticaSection.TrailingComment.Text = " Habitica Authentication";
+
+			IniFile.Save(SettingsFileInfo.FullName);
+		}
+
+		public FileInfo SettingsFileInfo { get; private set; }
+
+		private IniFile IniFile { get; set; } = new IniFile();
+
+		public string TrelloApiKey { get { return IniFile.Sections["Trello"].Keys["API_Key"].Value; } }
+
+		public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value; } }
+	}
 }
