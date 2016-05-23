@@ -106,13 +106,16 @@ namespace trellabit.net
 			// Trello section
 			IniSection trelloSection = IniFile.Sections.Add("Trello");
 			trelloSection.TrailingComment.Text = " Trello Authentication";
-			IniKey trelloApiKey = trelloSection.Keys.Add("API_Key", "<your_api_key>");
+
+            IniKey trelloApiKey = trelloSection.Keys.Add("API_Key", "    ");
 			trelloApiKey.LeadingComment.Text = " Visit https://trello.com/1/appKey/generate to get your Trello API key";
-			IniKey trelloAuthToken = trelloSection.Keys.Add("auth_token", "");
+
+			IniKey trelloAuthToken = trelloSection.Keys.Add("auth_token", "    ");
 			trelloAuthToken.LeadingComment.Text = " Paste your authorisation token here";
 
 			// Habitica section
 			IniSection habiticaSection = IniFile.Sections.Add("Habitica");
+            habiticaSection.TrailingComment.EmptyLinesBefore = 1;
 			habiticaSection.TrailingComment.Text = " Habitica Authentication";
 
 			IniFile.Save(SettingsFileInfo.FullName);
