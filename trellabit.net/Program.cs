@@ -69,7 +69,7 @@ namespace trellabit.net
                 String.Format(Settings.Default.TrelloAuthUrl,
                     trelloApiKey,
                     Settings.Default.AppName,
-                    "1day"));
+                    "never"));
             // Expiry options: 1hour, 1day, 30days, never
 
             if (System.Windows.Forms.MessageBox.Show(
