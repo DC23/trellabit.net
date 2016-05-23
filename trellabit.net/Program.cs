@@ -37,21 +37,14 @@ namespace trellabit.net
 
             if (userOptions.Valid)
             {
-                // quick test of Manatee hacked directly into the housekeeping code
-                var serializer = new ManateeSerializer();
-                TrelloConfiguration.Serializer = serializer;
-                TrelloConfiguration.Deserializer = serializer;
-                TrelloConfiguration.JsonFactory = new ManateeFactory();
-                TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
-                TrelloAuthorization.Default.AppKey = userOptions.TrelloApiKey;
-                TrelloAuthorization.Default.UserToken = userOptions.TrelloToken;
-                foreach (var board in Member.Me.Boards)
+                try
                 {
-                    Console.WriteLine(
-                        String.Format("{0}: Archived: {1}, Cards: {2}",
-                            board.Name,
-                            board.IsClosed,
-                            board.Cards.Count()));
+                    Run(userOptions);
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e);
+                    Exit(3);
                 }
             }
             else
@@ -61,6 +54,26 @@ namespace trellabit.net
             }
 
             Exit();
+        }
+
+        private static void Run(UserOptions userOptions)
+        {
+            // quick test of Manatee hacked directly into the housekeeping code
+            var serializer = new ManateeSerializer();
+            TrelloConfiguration.Serializer = serializer;
+            TrelloConfiguration.Deserializer = serializer;
+            TrelloConfiguration.JsonFactory = new ManateeFactory();
+            TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
+            TrelloAuthorization.Default.AppKey = userOptions.TrelloApiKey;
+            TrelloAuthorization.Default.UserToken = userOptions.TrelloToken;
+            foreach (var board in Member.Me.Boards)
+            {
+                Console.WriteLine(
+                    String.Format("{0}: Archived: {1}, Cards: {2}",
+                        board.Name,
+                        board.IsClosed,
+                        board.Cards.Count()));
+            }
         }
 
         private static void GetAuthorisationToken(string trelloApiKey)
