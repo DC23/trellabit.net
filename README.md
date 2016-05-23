@@ -12,4 +12,4 @@ Experimental .Net integration between Trello and Habitica. The goal is to provid
 This project has been tested on the following platforms:
 
 * Visual Studio 2015 Community Edition, on both Windows 10 and Windows 7.
-* Linux with Monodevelop X.X.
+* Linux with Monodevelop 4.X.
