@@ -41,6 +41,12 @@ namespace trellabit.net
                 {
                     Run(userOptions);
                 }
+                catch (System.Net.Http.HttpRequestException e)
+                {
+                    logger.Error("Suspected bad authorization token");
+                    logger.Error(e);
+                    Exit(3);
+                }
                 catch (Exception e)
                 {
                     logger.Error(e);
