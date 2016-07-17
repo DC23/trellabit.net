@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using trellabit.Core;
 
 namespace trellabit.interfaces
 {
@@ -16,5 +17,8 @@ namespace trellabit.interfaces
         DateTime DueDate { get; set; }
 
         bool IsComplete { get; set; }
+
+        // Implement in Trello with hidden labels. Habitica has a direct implementation
+        Difficulty Difficulty { get; set; }
     }
 }
