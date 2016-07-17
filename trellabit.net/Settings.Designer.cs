@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace trellabit.net {
+namespace trellabit {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
