@@ -76,8 +76,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Difficulty.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Core\UserOptions.cs" />
+    <Compile Include="Interfaces\IChecklist.cs" />
+    <Compile Include="Interfaces\IChecklistItem.cs" />
+    <Compile Include="Interfaces\IChecklistTask.cs" />
     <Compile Include="Interfaces\ITask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.Designer.cs">
