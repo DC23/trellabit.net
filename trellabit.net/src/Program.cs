@@ -1,7 +1,4 @@
-﻿using Manatee.Trello;
-using Manatee.Trello.ManateeJson;
-using Manatee.Trello.WebApi;
-using NLog;
+﻿using NLog;
 using System;
 using System.IO;
 using System.Linq;
@@ -23,41 +20,41 @@ namespace trellabit.cli
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     Settings.Default.IniFileName)));
 
-			if (!userOptions.IsTrelloApiKeyValid)
-            {
-                logger.Warn("You must paste your Trello API key into the ini file.");
-                Exit(2);
-            }
+			//if (!userOptions.IsTrelloApiKeyValid)
+   //         {
+   //             logger.Warn("You must paste your Trello API key into the ini file.");
+   //             Exit(2);
+   //         }
 
-			if (!userOptions.IsTrelloTokenValid)
-            {
-                GetAuthorisationToken(userOptions.TrelloApiKey);
-                Exit(1);
-            }
+			//if (!userOptions.IsTrelloTokenValid)
+   //         {
+   //             GetAuthorisationToken(userOptions.TrelloApiKey);
+   //             Exit(1);
+   //         }
 
-            if (userOptions.Valid)
-            {
-                try
-                {
-                    Run(userOptions);
-                }
-                catch (System.Net.Http.HttpRequestException e)
-                {
-                    logger.Error("Suspected bad authorization token");
-                    logger.Error(e);
-                    Exit(3);
-                }
-                catch (Exception e)
-                {
-                    logger.Error(e);
-                    Exit(3);
-                }
-            }
-            else
-            {
-                logger.Warn("User options file '{0}' not valid. Exiting.",
-                    Settings.Default.IniFileName);
-            }
+   //         if (userOptions.Valid)
+   //         {
+   //             try
+   //             {
+   //                 Run(userOptions);
+   //             }
+   //             catch (System.Net.Http.HttpRequestException e)
+   //             {
+   //                 logger.Error("Suspected bad authorization token");
+   //                 logger.Error(e);
+   //                 Exit(3);
+   //             }
+   //             catch (Exception e)
+   //             {
+   //                 logger.Error(e);
+   //                 Exit(3);
+   //             }
+   //         }
+   //         else
+   //         {
+   //             logger.Warn("User options file '{0}' not valid. Exiting.",
+   //                 Settings.Default.IniFileName);
+   //         }
 
             Exit();
         }
@@ -65,21 +62,21 @@ namespace trellabit.cli
         private static void Run(UserOptions userOptions)
         {
             // quick test of Manatee hacked directly into the housekeeping code
-            var serializer = new ManateeSerializer();
-            TrelloConfiguration.Serializer = serializer;
-            TrelloConfiguration.Deserializer = serializer;
-            TrelloConfiguration.JsonFactory = new ManateeFactory();
-            TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
-            TrelloAuthorization.Default.AppKey = userOptions.TrelloApiKey;
-            TrelloAuthorization.Default.UserToken = userOptions.TrelloToken;
-            foreach (var board in Member.Me.Boards)
-            {
-                Console.WriteLine(
-                    String.Format("{0}: Archived: {1}, Cards: {2}",
-                        board.Name,
-                        board.IsClosed,
-                        board.Cards.Count()));
-            }
+            //var serializer = new ManateeSerializer();
+            //TrelloConfiguration.Serializer = serializer;
+            //TrelloConfiguration.Deserializer = serializer;
+            //TrelloConfiguration.JsonFactory = new ManateeFactory();
+            //TrelloConfiguration.RestClientProvider = new WebApiClientProvider();
+            //TrelloAuthorization.Default.AppKey = userOptions.TrelloApiKey;
+            //TrelloAuthorization.Default.UserToken = userOptions.TrelloToken;
+            //foreach (var board in Member.Me.Boards)
+            //{
+            //    Console.WriteLine(
+            //        String.Format("{0}: Archived: {1}, Cards: {2}",
+            //            board.Name,
+            //            board.IsClosed,
+            //            board.Cards.Count()));
+            //}
         }
 
         private static void GetAuthorisationToken(string trelloApiKey)
