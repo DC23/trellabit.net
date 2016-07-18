@@ -79,7 +79,6 @@ namespace trellabit.cli
             //}
         }
 
-        // TODO: where is a good home for this method?
         private static void GetAuthorisationToken(string trelloApiKey)
         {
             Uri trelloAuthUri = new Uri(
