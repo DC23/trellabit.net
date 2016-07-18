@@ -20,41 +20,41 @@ namespace trellabit.cli
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     Settings.Default.IniFileName)));
 
-			//if (!userOptions.IsTrelloApiKeyValid)
-   //         {
-   //             logger.Warn("You must paste your Trello API key into the ini file.");
-   //             Exit(2);
-   //         }
+            if (!userOptions.IsTrelloApiKeyValid)
+            {
+                logger.Warn("You must paste your Trello API key into the ini file.");
+                Exit(2);
+            }
 
-			//if (!userOptions.IsTrelloTokenValid)
-   //         {
-   //             GetAuthorisationToken(userOptions.TrelloApiKey);
-   //             Exit(1);
-   //         }
+            if (!userOptions.IsTrelloTokenValid)
+            {
+                GetAuthorisationToken(userOptions.TrelloApiKey);
+                Exit(1);
+            }
 
-   //         if (userOptions.Valid)
-   //         {
-   //             try
-   //             {
-   //                 Run(userOptions);
-   //             }
-   //             catch (System.Net.Http.HttpRequestException e)
-   //             {
-   //                 logger.Error("Suspected bad authorization token");
-   //                 logger.Error(e);
-   //                 Exit(3);
-   //             }
-   //             catch (Exception e)
-   //             {
-   //                 logger.Error(e);
-   //                 Exit(3);
-   //             }
-   //         }
-   //         else
-   //         {
-   //             logger.Warn("User options file '{0}' not valid. Exiting.",
-   //                 Settings.Default.IniFileName);
-   //         }
+            if (userOptions.Valid)
+            {
+                try
+                {
+                    Run(userOptions);
+                }
+                catch (System.Net.Http.HttpRequestException e)
+                {
+                    logger.Error("Suspected bad authorization token");
+                    logger.Error(e);
+                    Exit(3);
+                }
+                catch (Exception e)
+                {
+                    logger.Error(e);
+                    Exit(3);
+                }
+            }
+            else
+            {
+                logger.Warn("User options file '{0}' not valid. Exiting.",
+                    Settings.Default.IniFileName);
+            }
 
             Exit();
         }
@@ -79,6 +79,7 @@ namespace trellabit.cli
             //}
         }
 
+        // TODO: where is a good home for this method?
         private static void GetAuthorisationToken(string trelloApiKey)
         {
             Uri trelloAuthUri = new Uri(
