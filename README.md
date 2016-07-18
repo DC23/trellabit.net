@@ -26,22 +26,16 @@ By default, Monodevelop writes console output into a read-only panel.
 This doesn't work with `trellabit.net` as it requires console input.
 Therefore, make sure that `Run on external console` is checked in the `Run-->General` options for `trellabit.net`.
 
-# Refactoring Plans
-I plan to refactor into separate assemblies in the near future, but for simpler development initially during the early R&D phase, I am simply keeping things sorted into folders and namespaces in the one assembly. I do need to keep a careful eye on dependencies though, so the split may be soon. The plan is for something like:
-
+# High-level Architecture
+Assemblies:
 * trellabit.operations: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
     * Operates on the trellabit.model interfaces
-    * depends on model
 * trellabit.model: The abstract interfaces and model classes shared by all task/card services.
-    * depends on nothing
 * trellabit.trello: The Trello-specific implementation of the task service interfaces.
-    * depends on model
 * trellabit.habitica: The Habitica-specific implementation of the trellabit.model interfaces.
-    * Depends on model
 * trellabit.core: Core/common utility classes shared by many other modules.
 * trellabit.cli: The command-line interface wrapper. Provides a CLI UI to trellabit.operations.
     * Configures logging
-    * Depends on everything else.
     * Provides scope for me to reuse the habitica assembly in other applications (such as my pomodoro app).
     * Provides scope to create a GUI interface if desired.
     
