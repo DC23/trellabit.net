@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <StartupObject>trellabit.core.Program</StartupObject>
+    <StartupObject>trellabit.cli.Program</StartupObject>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -76,13 +76,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Difficulty.cs" />
-    <Compile Include="Core\Program.cs" />
-    <Compile Include="Core\UserOptions.cs" />
-    <Compile Include="Interfaces\IChecklist.cs" />
-    <Compile Include="Interfaces\IChecklistItem.cs" />
-    <Compile Include="Interfaces\IChecklistTask.cs" />
-    <Compile Include="Interfaces\ITask.cs" />
+    <Compile Include="model\Difficulty.cs" />
+    <Compile Include="cli\Program.cs" />
+    <Compile Include="cli\UserOptions.cs" />
+    <Compile Include="model\interfaces\IChecklist.cs" />
+    <Compile Include="model\interfaces\IChecklistItem.cs" />
+    <Compile Include="model\interfaces\IChecklistTask.cs" />
+    <Compile Include="model\interfaces\ITask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,6 +106,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="core\" />
+    <Folder Include="habitica\" />
+    <Folder Include="operations\" />
+    <Folder Include="trello\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

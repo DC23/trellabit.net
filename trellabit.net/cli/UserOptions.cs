@@ -2,7 +2,7 @@
 using NLog;
 using System.IO;
 
-namespace trellabit.core
+namespace trellabit.cli
 {
 	internal class UserOptions
 	{

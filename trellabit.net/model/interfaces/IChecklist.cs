@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.Interfaces
+namespace trellabit.model.interfaces
 {
     interface IChecklist
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.interfaces;
+using trellabit.model;
 
-namespace trellabit.Interfaces
+namespace trellabit.model.interfaces
 {
     interface IChecklistTask : ITask
     {

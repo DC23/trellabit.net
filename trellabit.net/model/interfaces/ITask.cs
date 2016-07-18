@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.Core;
+using trellabit.model;
 
-namespace trellabit.interfaces
+namespace trellabit.model.interfaces
 {
     // TODO: install ghostdoc and comment
     interface ITask

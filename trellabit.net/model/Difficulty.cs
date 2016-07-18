@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.Core
+namespace trellabit.model
 {
     enum Difficulty
     {

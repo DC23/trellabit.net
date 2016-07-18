@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace trellabit.core
+namespace trellabit.cli
 {
     class Program
     {
