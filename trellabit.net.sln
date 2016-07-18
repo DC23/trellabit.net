@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.cli", "trellabit.net\trellabit.cli.csproj", "{32069475-EDCA-41F2-A0EB-EE530B522C44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.cli", "trellabit.cli\trellabit.cli.csproj", "{32069475-EDCA-41F2-A0EB-EE530B522C44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F36A9D33-E116-4B22-9F6D-9A751DB79D21}"
 	ProjectSection(SolutionItems) = preProject
