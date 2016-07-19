@@ -7,14 +7,6 @@ I find the flat issue list in Github too limited for planning, and am using
 a private Trello board. If you want to contribute, then please request access to
 the Trello board.
 
-# Key Dependencies
-
-* [Manatee.Trello](https://bitbucket.org/gregsdennis/manatee.trello)
-* [Refit](https://github.com/paulcbetts/refit)
-* [MadMilkman.Ini](https://github.com/MarioZ/MadMilkman.Ini)
-* [NLog](http://nlog-project.org/)
-
-I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, but development appears to have stalled in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using Refit to manage the REST API.
 # Supported Platforms
 This project has been tested on the following platforms:
 
@@ -31,26 +23,28 @@ Therefore, make sure that `Run on external console` is checked in the `Run-->Gen
 I am using a somewhat traditional tiered architecture, with a data access layer, business logic layer, and UI layer.
 
 ## Data Access Layer
-* trellabit.model: The abstract interfaces and data model classes that define the data objects and the services that manage them.
-* trellabit.trello: The Trello-specific data service implementation.
-* trellabit.habitica: The Habitica-specific data service implementation.
+* `trellabit.model`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
+* `trellabit.trello`: The Trello-specific data service implementation.
+* `trellabit.habitica`: The Habitica-specific data service implementation.
 
 The key roles of the service implementations are:
 * map the data model to the specific third-party service
 * translate the service interface methods to the specific service API
 
+I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, but development appears to have stalled in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using Refit to manage the REST API.
+
 ## Logic Layer
-* trellabit.logic: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
+* `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
     * Operates on the trellabit.model interfaces to keep it insulated from backend details such as the 3rd party APIs.
 
 ## User Interface Layer
-* trellabit.cli: The command-line interface wrapper. Provides a CLI UI to trellabit.operations.
+* `trellabit.cli`: The command-line interface wrapper. Provides a CLI UI to trellabit.operations.
     * Configures logging
     * Provides scope for me to reuse the habitica assembly in other applications (such as my pomodoro app).
     * Provides scope to create a GUI interface if desired.
 
 ## Utility Assembly
-* trellabit.core: Core/common utility classes shared by many other modules.
+* `trellabit.core`: Core/common utility classes shared by many other modules.
 This is not really a layer. It is a separate module that sits off to the side and provides a grab-bag of shared functionality. Not sure what yet but I always end up with stuff that needs a home.
     
 Of course, this may all change as I move forward, but I am hoping I can implement the operations in a generic way against a set of abstract interfaces, with the service details hidden away.
