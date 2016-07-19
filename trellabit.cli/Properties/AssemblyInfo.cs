@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("trellabit.net")]
-[assembly: AssemblyDescription("Experimental .Net integration between Trello and Habitica.")]
+[assembly: AssemblyTitle("trellabit.cli")]
+[assembly: AssemblyDescription("Commandline UI for trellabit.net, a .Net integration between Trello and Habitica.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JugglinDan")]
-[assembly: AssemblyProduct("trellabit.net")]
+[assembly: AssemblyProduct("trellabit.cli")]
 [assembly: AssemblyCopyright("Copyright © JugglinDan 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,6 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.1.*")]
 [assembly: AssemblyFileVersion("0.1.0.0")]
