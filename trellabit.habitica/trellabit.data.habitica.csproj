@@ -7,8 +7,8 @@
     <ProjectGuid>{2F924B72-3381-4939-B657-06A752715C57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>trellabit.habitica</RootNamespace>
-    <AssemblyName>trellabit.habitica</AssemblyName>
+    <RootNamespace>trellabit.data.habitica</RootNamespace>
+    <AssemblyName>trellabit.data.habitica</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -65,9 +65,9 @@
       <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
       <Name>trellabit.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.model\trellabit.model.csproj">
+    <ProjectReference Include="..\trellabit.model\trellabit.data.csproj">
       <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
-      <Name>trellabit.model</Name>
+      <Name>trellabit.data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

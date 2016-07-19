@@ -23,9 +23,9 @@ Therefore, make sure that `Run on external console` is checked in the `Run-->Gen
 I am using a somewhat traditional tiered architecture, with a data access layer, business logic layer, and UI layer.
 
 ## Data Access Layer
-* `trellabit.model`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
-* `trellabit.trello`: The Trello-specific data service implementation.
-* `trellabit.habitica`: The Habitica-specific data service implementation.
+* `trellabit.data`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
+* `trellabit.data.trello`: The Trello-specific data service implementation.
+* `trellabit.data.habitica`: The Habitica-specific data service implementation.
 
 The key roles of the service implementations are:
 * map the data model to the specific third-party service
