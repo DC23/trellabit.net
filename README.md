@@ -31,7 +31,8 @@ The key roles of the service implementations are:
 * map the data model to the specific third-party service
 * translate the service interface methods to the specific service API
 
-I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, but development appears to have stalled in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using Refit to manage the REST API.
+I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, but development appears to have stalled 
+in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using Refit to manage the REST API.
 
 ## Logic Layer
 * `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
@@ -42,6 +43,11 @@ I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habit
     * Configures logging
     * Provides scope for me to reuse the habitica assembly in other applications (such as my pomodoro app).
     * Provides scope to create a GUI interface if desired.
+
+## Testing Assembly
+`trellabit.tests` contains all unit tests for the other modules. The InternalsVisibleTo assembly attribute is used to give the test code access 
+to internal types, thus avoiding the problem of relaxed information hiding purely for the benefit of testing.
+Tests currently use a standard setup of [NUnit 3](http://www.nunit.org/) and [Moq](https://github.com/moq/moq4).
 
 ## Utility Assembly
 * `trellabit.core`: Core/common utility classes shared by many other modules.
