@@ -1,7 +1,11 @@
 # trellabit.net
-.Net integration between Trello and Habitica. The goal is to provide both a command-line interface to useful batch operations (such as batch application of labels), and synchronisation between Trello and Habitica. The initial focus is on one-way synchronisation from Trello to Habitica, essentially allowing Trello cards to drive Habitica To-Dos. Once that functionality is usable I will look to other features such as batch editing and bi-directional synchronisation.
+.Net integration between Trello and Habitica. The goal is to provide both a command-line interface to useful batch operations 
+(such as batch application of labels), and synchronisation between Trello and Habitica. The initial focus is on one-way synchronisation 
+from Trello to Habitica, essentially allowing Trello cards to drive Habitica To-Dos. Once that functionality is usable I will look to 
+other features such as batch editing and bi-directional synchronisation.
 
-Initially I am putting all projects into this single repository for rapid development, but I expect to refactor them out into separate repositories once development reaches the point where I want to use the functionality in other applications.
+Initially I am putting all projects into this single repository for rapid development, but I expect to refactor them out into separate
+repositories once development reaches the point where I want to use the functionality in other applications.
 
 I find the flat issue list in Github too limited for planning, and am using
 a private Trello board. If you want to contribute, then please request access to
@@ -18,6 +22,12 @@ By default, [MonoDevelop](http://www.monodevelop.com/) writes console output int
 This doesn't work with `trellabit.net` as it requires console input.
 Therefore, make sure that `Run on external console` is checked in the `Run-->General` options for `trellabit.net`.
 
+# Managing Assembly Version Strings
+I want to keep the assembly versions synchronised, which is a pain to edit manually. The build and revision numbers are set to autoincrement, but major and minor version numbers 
+have to be maintained manually. Rather than tediously do this for each release, I have added a configuration for the Python [bumpversion](https://github.com/peritus/bumpversion)
+package. See the bumpversion documentation for details on its use, but most of the time it boils down to `bumpversion major` or `bumpversion minor` at a command line from the 
+root solution directory.
+
 # High-level Architecture
 
 I am using a somewhat traditional tiered architecture, with a data access layer, business logic layer, and UI layer.
@@ -31,8 +41,8 @@ The key roles of the service implementations are:
 * map the data model to the specific third-party service
 * translate the service interface methods to the specific service API
 
-I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, but development appears to have stalled 
-in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
+I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, 
+but development appears to have stalled in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
 [Refit](https://github.com/paulcbetts/refit), or possibly [RestEase](https://github.com/canton7/RestEase), to manage the REST API.
 
 ## Logic Layer
