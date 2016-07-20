@@ -6,10 +6,17 @@ using System.Reflection;
 
 namespace trellabit.cli
 {
+    /// <summary>
+    /// The entry point to trellabit.cli
+    /// </summary>
     class Program
     {
         static Logger logger = LogManager.GetCurrentClassLogger();
 
+        /// <summary>
+        /// trellabit command-line interface entry point
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
         static void Main(string[] args)
         {
             logger.Info("Version {0} online",
@@ -20,15 +27,15 @@ namespace trellabit.cli
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
                     Settings.Default.IniFileName)));
 
-            if (!userOptions.IsTrelloApiKeyValid)
+            if (!userOptions.ContainsValidTrelloApiKey)
             {
                 logger.Warn("You must paste your Trello API key into the ini file.");
                 Exit(2);
             }
 
-            if (!userOptions.IsTrelloTokenValid)
+            if (!userOptions.ContainsValidTrelloToken)
             {
-                GetAuthorisationToken(userOptions.TrelloApiKey);
+                GetTrelloAuthorisationToken(userOptions.TrelloApiKey);
                 Exit(1);
             }
 
@@ -59,6 +66,10 @@ namespace trellabit.cli
             Exit();
         }
 
+        /// <summary>
+        /// Template method that runs the application after all the housekeeping is completed.
+        /// </summary>
+        /// <param name="userOptions">The user options.</param>
         private static void Run(UserOptions userOptions)
         {
 			logger.Debug("Running");
@@ -68,14 +79,18 @@ namespace trellabit.cli
 			logger.Debug("Done");
         }
 
-        private static void GetAuthorisationToken(string trelloApiKey)
+        /// <summary>
+        /// Gets the Trello authorisation token.
+        /// </summary>
+        /// <param name="trelloApiKey">The Trello API key.</param>
+        private static void GetTrelloAuthorisationToken(string trelloApiKey)
         {
             Uri trelloAuthUri = new Uri(
                 String.Format(Settings.Default.TrelloAuthUrl,
                     trelloApiKey,
                     Settings.Default.AppName,
                     "never"));
-            // Expiry options: 1hour, 1day, 30days, never
+            // TODO: The expiry options are 1hour, 1day, 30days, never. Should this be user selectable?
 
             if (System.Windows.Forms.MessageBox.Show(
                 Settings.Default.TrelloAuthRequest,
@@ -93,16 +108,21 @@ namespace trellabit.cli
             }
         }
 
-        static void Exit(int code = 0)
+        /// <summary>
+        /// Exits the application.
+        /// </summary>
+        /// <param name="exitCode">The exit code.</param>
+        static void Exit(int exitCode = 0)
         {
             Console.WriteLine("\nPress any key to exit ...");
             Console.ReadKey();
 
-            logger.Info("{0} {1} offline",
+            logger.Info("{0} {1} offline with exit code {2}",
                 Assembly.GetExecutingAssembly().GetName().Name,
-                Assembly.GetExecutingAssembly().GetName().Version);
+                Assembly.GetExecutingAssembly().GetName().Version,
+                exitCode);
 
-            Environment.Exit(code);
+            Environment.Exit(exitCode);
         }
     }
 }

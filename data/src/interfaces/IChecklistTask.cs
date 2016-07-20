@@ -7,6 +7,10 @@ using trellabit.data;
 
 namespace trellabit.data.interfaces
 {
+    /// <summary>
+    /// A task that has a checklist.
+    /// </summary>
+    /// <seealso cref="trellabit.data.interfaces.ITask" />
     interface IChecklistTask : ITask
     {
         IChecklist Checklist { get; set; }

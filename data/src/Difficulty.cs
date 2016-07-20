@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace trellabit.data
 {
+    /// <summary>
+    /// Task difficulty levels.
+    /// </summary>
     enum Difficulty
     {
-        Trivial,
+        Trivial = 0,
         Easy,
         Medium,
         Hard
