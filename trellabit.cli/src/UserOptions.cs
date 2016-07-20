@@ -15,6 +15,7 @@ namespace trellabit.cli
 			if (SettingsFileInfo.Exists)
 			{
 				IniFile.Load(SettingsFileInfo.FullName);
+				logger.Debug("Trello validation removed. See the Git tag trello_usersettings_validation");
 			}
 			else
 			{
@@ -26,24 +27,6 @@ namespace trellabit.cli
 		{
 			get
 			{
-				if (!IniFile.Sections.Contains("Trello"))
-				{
-					logger.Warn("Trello section missing");
-					return false;
-				}
-
-				if (!IniFile.Sections["Trello"].Keys.Contains("API_Key"))
-				{ 
-					logger.Warn("Trello API_Key missing");
-					return false;
-				}
-
-				if (TrelloApiKey == "<your_api_key>" || string.IsNullOrEmpty(TrelloApiKey))
-				{ 
-					logger.Warn("Trello API_Key invalid");
-					return false;
-				}
-
 				return true;
 			}
 		}
@@ -52,24 +35,6 @@ namespace trellabit.cli
 		{
 			get
 			{ 
-				if (!IniFile.Sections.Contains("Trello"))
-				{
-					logger.Warn("Trello section missing");
-					return false;
-				}
-
-				if (!IniFile.Sections["Trello"].Keys.Contains("auth_token"))
-				{ 
-					logger.Warn("Trello auth_token missing");
-					return false;
-				}
-
-				if (string.IsNullOrEmpty(TrelloToken))
-				{ 
-					logger.Warn("Trello auth_token invalid");
-					return false;
-				}
-
 				return true;
 			}
 		}
