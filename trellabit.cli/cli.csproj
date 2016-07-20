@@ -7,8 +7,8 @@
     <ProjectGuid>{32069475-EDCA-41F2-A0EB-EE530B522C44}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>trellabit</RootNamespace>
-    <AssemblyName>trellabit.net</AssemblyName>
+    <RootNamespace>trellabit.cli</RootNamespace>
+    <AssemblyName>trellabit.cli</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -87,25 +87,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\trellabit.core\trellabit.core.csproj">
+    <ProjectReference Include="..\trellabit.core\core.csproj">
       <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
-      <Name>trellabit.core</Name>
+      <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data.habitica\trellabit.data.habitica.csproj">
+    <ProjectReference Include="..\trellabit.data.habitica\data.habitica.csproj">
       <Project>{2f924b72-3381-4939-b657-06a752715c57}</Project>
-      <Name>trellabit.data.habitica</Name>
+      <Name>data.habitica</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data\trellabit.data.csproj">
+    <ProjectReference Include="..\trellabit.data\data.csproj">
       <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
-      <Name>trellabit.data</Name>
+      <Name>data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.logic\trellabit.logic.csproj">
+    <ProjectReference Include="..\trellabit.logic\logic.csproj">
       <Project>{ce2cdbc4-3462-4c95-8371-f43a75f037ae}</Project>
-      <Name>trellabit.logic</Name>
+      <Name>logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data.trello\trellabit.data.trello.csproj">
+    <ProjectReference Include="..\trellabit.data.trello\data.trello.csproj">
       <Project>{23d4c5e0-d925-4ceb-a575-cb8231de521e}</Project>
-      <Name>trellabit.data.trello</Name>
+      <Name>data.trello</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -45,13 +45,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\trellabit.core\trellabit.core.csproj">
+    <ProjectReference Include="..\trellabit.core\core.csproj">
       <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
-      <Name>trellabit.core</Name>
+      <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data\trellabit.data.csproj">
+    <ProjectReference Include="..\trellabit.data\data.csproj">
       <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
-      <Name>trellabit.data</Name>
+      <Name>data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

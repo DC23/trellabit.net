@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.cli", "trellabit.cli\trellabit.cli.csproj", "{32069475-EDCA-41F2-A0EB-EE530B522C44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cli", "trellabit.cli\cli.csproj", "{32069475-EDCA-41F2-A0EB-EE530B522C44}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F36A9D33-E116-4B22-9F6D-9A751DB79D21}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,17 +14,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.data", "trellabit.data\trellabit.data.csproj", "{801C9077-30F1-4E57-8126-877F5ECC6DE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data", "trellabit.data\data.csproj", "{801C9077-30F1-4E57-8126-877F5ECC6DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.data.trello", "trellabit.data.trello\trellabit.data.trello.csproj", "{23D4C5E0-D925-4CEB-A575-CB8231DE521E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data.trello", "trellabit.data.trello\data.trello.csproj", "{23D4C5E0-D925-4CEB-A575-CB8231DE521E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.data.habitica", "trellabit.data.habitica\trellabit.data.habitica.csproj", "{2F924B72-3381-4939-B657-06A752715C57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data.habitica", "trellabit.data.habitica\data.habitica.csproj", "{2F924B72-3381-4939-B657-06A752715C57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.logic", "trellabit.logic\trellabit.logic.csproj", "{CE2CDBC4-3462-4C95-8371-F43A75F037AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logic", "trellabit.logic\logic.csproj", "{CE2CDBC4-3462-4C95-8371-F43A75F037AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.core", "trellabit.core\trellabit.core.csproj", "{7486EB8A-8084-4B36-949B-9876517CAFD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core", "trellabit.core\core.csproj", "{7486EB8A-8084-4B36-949B-9876517CAFD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trellabit.tests", "trellabit.tests\trellabit.tests.csproj", "{42E5B3D7-7B04-431B-8555-CCE2F59F7ABA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "trellabit.tests\tests.csproj", "{42E5B3D7-7B04-431B-8555-CCE2F59F7ABA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
