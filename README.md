@@ -32,7 +32,8 @@ The key roles of the service implementations are:
 * translate the service interface methods to the specific service API
 
 I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, but development appears to have stalled 
-in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using Refit to manage the REST API.
+in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
+[Refit](https://github.com/paulcbetts/refit), or possibly [RestEase](https://github.com/canton7/RestEase), to manage the REST API.
 
 ## Logic Layer
 * `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
