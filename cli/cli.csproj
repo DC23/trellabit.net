@@ -87,23 +87,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\trellabit.core\core.csproj">
+    <ProjectReference Include="..\core\core.csproj">
       <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
       <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data.habitica\data.habitica.csproj">
+    <ProjectReference Include="..\data.habitica\data.habitica.csproj">
       <Project>{2f924b72-3381-4939-b657-06a752715c57}</Project>
       <Name>data.habitica</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data\data.csproj">
+    <ProjectReference Include="..\data\data.csproj">
       <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
       <Name>data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.logic\logic.csproj">
+    <ProjectReference Include="..\logic\logic.csproj">
       <Project>{ce2cdbc4-3462-4c95-8371-f43a75f037ae}</Project>
       <Name>logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data.trello\data.trello.csproj">
+    <ProjectReference Include="..\data.trello\data.trello.csproj">
       <Project>{23d4c5e0-d925-4ceb-a575-cb8231de521e}</Project>
       <Name>data.trello</Name>
     </ProjectReference>

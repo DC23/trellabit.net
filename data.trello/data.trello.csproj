@@ -73,11 +73,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\trellabit.core\core.csproj">
+    <ProjectReference Include="..\core\core.csproj">
       <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
       <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\trellabit.data\data.csproj">
+    <ProjectReference Include="..\data\data.csproj">
       <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
       <Name>data</Name>
     </ProjectReference>
