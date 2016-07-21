@@ -43,14 +43,17 @@ namespace trellabit.core
 
             if (!uo.ContainsValidTrelloApiKey)
             {
-                //throw new InvalidCredentialsException("You must paste your Trello API key into the ini file");
+                throw new InvalidCredentialsException("You must paste your Trello API key into the ini file");
             }
 
             if (!uo.ContainsValidTrelloToken)
             {
                 GetTrelloAuthorisationToken(uo.TrelloApiKey);
-                //throw new InvalidCredentialsException("You must paste the Trello authorisation token into the ini file");
+                throw new InvalidCredentialsException("You must paste the Trello authorisation token into the ini file");
             }
+
+            if (!uo.Valid)
+                throw new InvalidUserOptionsException();
 
             return uo;
         }

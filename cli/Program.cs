@@ -23,35 +23,28 @@ namespace trellabit.cli
             logger.Info("Version {0} online",
                 Assembly.GetExecutingAssembly().GetName().Version);
 
-            UserOptions userOptions = UserOptions.Create(
-                new FileInfo(Path.Combine(
-                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    Settings.Default.IniFileName)),
-                args);
+            try
+            {
+                UserOptions userOptions = UserOptions.Create(
+                    new FileInfo(Path.Combine(
+                        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                        Settings.Default.IniFileName)),
+                    args);
 
-            if (userOptions.Valid)
-            {
-                try
-                {
-                    Run(userOptions);
-                }
-                catch (System.Net.Http.HttpRequestException e)
-                {
-                    logger.Error("Suspected bad authorization token");
-                    logger.Error(e);
-                    Exit(3);
-                }
-                catch (Exception e)
-                {
-                    logger.Error(e);
-                    Exit(3);
-                }
+                Run(userOptions);
             }
-            else
+            // catch invalid credentials
+            // catch invalid user options
+            catch (Exception e)
             {
-                logger.Warn("User options file '{0}' not valid. Exiting.",
-                    Settings.Default.IniFileName);
+                logger.Error(e);
+                Exit(3);
             }
+
+            //{
+            //    logger.Warn("User options file '{0}' not valid. Exiting.",
+            //        Settings.Default.IniFileName);
+            //}
 
             Exit();
         }
@@ -62,9 +55,9 @@ namespace trellabit.cli
         /// <param name="userOptions">The user options.</param>
         private static void Run(UserOptions userOptions)
         {
-			logger.Debug("Running");
+            logger.Debug("Running");
 
-			logger.Debug("Done");
+            logger.Debug("Done");
         }
 
 
