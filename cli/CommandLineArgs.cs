@@ -16,9 +16,20 @@ namespace trellabit.cli
         /// <value>
         /// The poison damage per day.
         /// </value>
-        [Option('p', "poison_per_day", Required = false,
+        [Option('p', "poison-per-day", Required = false, DefaultValue = 10.0,
             HelpText = "The amount of HP damage to be applied by poisoning in a 24 hour period")]
         public float PoisonDamagePerDay { get; set; }
+
+        /// <summary>
+        /// Gets or sets the update interval in minutes.
+        /// This is the frequency at which Habitica will be polled for changes and poisoning rules applied.
+        /// </summary>
+        /// <value>
+        /// The update interval in minutes.
+        /// </value>
+        [Option('i', "update-interval", Required = false, DefaultValue = 15, 
+            HelpText = "The frequency at which Habitica will be polled for changes and poisoning rules applied")]
+        public int UpdateIntervalMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets the last state of the parser.

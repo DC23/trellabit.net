@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Difficulty.cs" />
-    <Compile Include="src\interfaces\IChecklist.cs" />
-    <Compile Include="src\interfaces\IChecklistItem.cs" />
-    <Compile Include="src\interfaces\IChecklistTask.cs" />
-    <Compile Include="src\interfaces\ITask.cs" />
+    <Compile Include="Difficulty.cs" />
+    <Compile Include="interfaces\IChecklist.cs" />
+    <Compile Include="interfaces\IChecklistItem.cs" />
+    <Compile Include="interfaces\IChecklistTask.cs" />
+    <Compile Include="interfaces\ITask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

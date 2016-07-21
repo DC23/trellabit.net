@@ -76,9 +76,6 @@ namespace trellabit.cli
         {
 			logger.Debug("Running");
 
-            // Test logging from data.habitica
-            trellabit.data.habitica.Class1.LogSomething("I be in your assembly, loggin' t' your log");
-
 			logger.Debug("Done");
         }
 
