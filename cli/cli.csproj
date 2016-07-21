@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Settings.cs" />
+    <Compile Include="src\CommandLineArgs.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="src\UserOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

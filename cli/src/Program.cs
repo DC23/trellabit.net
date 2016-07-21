@@ -39,11 +39,12 @@ namespace trellabit.cli
                 Exit(1);
             }
 
-            if (userOptions.Valid)
+            var commandLineArgs = new CommandLineArgs();
+            if (userOptions.Valid && CommandLine.Parser.Default.ParseArguments(args, commandLineArgs))
             {
                 try
                 {
-                    Run(userOptions);
+                    Run(userOptions, commandLineArgs);
                 }
                 catch (System.Net.Http.HttpRequestException e)
                 {
@@ -70,7 +71,8 @@ namespace trellabit.cli
         /// Template method that runs the application after all the housekeeping is completed.
         /// </summary>
         /// <param name="userOptions">The user options.</param>
-        private static void Run(UserOptions userOptions)
+        /// <param name="args">The command line arguments.</param>
+        private static void Run(UserOptions userOptions, CommandLineArgs args)
         {
 			logger.Debug("Running");
 
