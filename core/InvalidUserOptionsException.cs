@@ -6,7 +6,7 @@ namespace trellabit.core
     /// Thrown when the user options fail validation.
     /// </summary>
     /// <seealso cref="System.Exception" />
-    class InvalidUserOptionsException : Exception
+    public class InvalidUserOptionsException : Exception
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidUserOptionsException"/> class.

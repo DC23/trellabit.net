@@ -33,18 +33,21 @@ namespace trellabit.cli
 
                 Run(userOptions);
             }
-            // catch invalid credentials
-            // catch invalid user options
+            catch (InvalidCredentialsException e)
+            {
+                logger.Error(e);
+                Exit(1);
+            }
+            catch (InvalidUserOptionsException e)
+            {
+                logger.Error(e);
+                Exit(2);
+            }
             catch (Exception e)
             {
                 logger.Error(e);
                 Exit(3);
             }
-
-            //{
-            //    logger.Warn("User options file '{0}' not valid. Exiting.",
-            //        Settings.Default.IniFileName);
-            //}
 
             Exit();
         }
@@ -59,8 +62,6 @@ namespace trellabit.cli
 
             logger.Debug("Done");
         }
-
-
 
         /// <summary>
         /// Exits the application.
