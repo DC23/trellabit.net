@@ -70,5 +70,17 @@ namespace trellabit.core {
                 return ((string)(this["TrelloAuthUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("never")]
+        public string TrelloAuthTokenExpiry {
+            get {
+                return ((string)(this["TrelloAuthTokenExpiry"]));
+            }
+            set {
+                this["TrelloAuthTokenExpiry"] = value;
+            }
+        }
     }
 }

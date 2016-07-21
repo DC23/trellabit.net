@@ -30,21 +30,19 @@ namespace trellabit.core
         public static UserOptions Create(FileInfo settingsFileInfo, string[] args)
         {
             UserOptions uo = new UserOptions();
-            if (settingsFileInfo.Exists)
-            {
-                uo.IniFile.Load(settingsFileInfo.FullName);
-            }
-            else
-            {
-                WriteDefaultIniFile(settingsFileInfo, uo.IniFile);
-            }
 
+            // load the ini file, or create a default
+            if (settingsFileInfo.Exists)
+                uo.IniFile.Load(settingsFileInfo.FullName);
+            else
+                WriteDefaultIniFile(settingsFileInfo, uo.IniFile);
+
+            // parse the command line
             CommandLine.Parser.Default.ParseArguments(args, uo);
 
+            // validation
             if (!uo.ContainsValidTrelloApiKey)
-            {
                 throw new InvalidCredentialsException("You must paste your Trello API key into the ini file");
-            }
 
             if (!uo.ContainsValidTrelloToken)
             {
@@ -68,7 +66,7 @@ namespace trellabit.core
                 string.Format(Settings.Default.TrelloAuthUrl,
                     trelloApiKey,
                     Settings.Default.AppName,
-                    "never"));
+                    Settings.Default.TrelloAuthTokenExpiry));
             // TODO: The expiry options are 1hour, 1day, 30days, never. Should this be user selectable?
 
             if (System.Windows.Forms.MessageBox.Show(

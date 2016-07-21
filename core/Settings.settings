@@ -17,5 +17,8 @@
     <Setting Name="TrelloAuthUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://trello.com/1/connect?key={0}&amp;name={1}&amp;response_type=token&amp;scope=read,write&amp;expiration={2}</Value>
     </Setting>
+    <Setting Name="TrelloAuthTokenExpiry" Type="System.String" Scope="User">
+      <Value Profile="(Default)">never</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
