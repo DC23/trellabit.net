@@ -16,14 +16,11 @@ namespace trellabit.logic.scenarios
         /// Initializes a new instance of the <see cref="Poisoned" /> class.
         /// </summary>
         /// <param name="userOptions">The user options.</param>
-        /// <param name="commandLineArgs">The command line arguments.</param>
-        public Poisoned(UserOptions userOptions, CommandLineArgs commandLineArgs)
+        public Poisoned(UserOptions userOptions)
         {
             UserOptions = userOptions;
-            ClArgs = commandLineArgs;
         }
 
         private UserOptions UserOptions { get; set; }
-        private CommandLineArgs ClArgs { get; set; }
     }
 }

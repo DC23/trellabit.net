@@ -23,10 +23,11 @@ namespace trellabit.cli
             logger.Info("Version {0} online",
                 Assembly.GetExecutingAssembly().GetName().Version);
 
-            UserOptions userOptions = new UserOptions(
+            UserOptions userOptions = UserOptions.Create(
                 new FileInfo(Path.Combine(
                     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    Settings.Default.IniFileName)));
+                    Settings.Default.IniFileName)),
+                args);
 
             if (!userOptions.ContainsValidTrelloApiKey)
             {
@@ -44,7 +45,7 @@ namespace trellabit.cli
             {
                 try
                 {
-                    Run(userOptions, CommandLineArgs.Create(args));
+                    Run(userOptions);
                 }
                 catch (System.Net.Http.HttpRequestException e)
                 {
@@ -71,8 +72,7 @@ namespace trellabit.cli
         /// Template method that runs the application after all the housekeeping is completed.
         /// </summary>
         /// <param name="userOptions">The user options.</param>
-        /// <param name="args">The command line arguments.</param>
-        private static void Run(UserOptions userOptions, CommandLineArgs args)
+        private static void Run(UserOptions userOptions)
         {
 			logger.Debug("Running");
 
