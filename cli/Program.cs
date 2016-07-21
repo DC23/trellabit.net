@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using trellabit.core;
 
 namespace trellabit.cli
 {
@@ -39,12 +40,11 @@ namespace trellabit.cli
                 Exit(1);
             }
 
-            var commandLineArgs = new CommandLineArgs();
-            if (userOptions.Valid && CommandLine.Parser.Default.ParseArguments(args, commandLineArgs))
+            if (userOptions.Valid)
             {
                 try
                 {
-                    Run(userOptions, commandLineArgs);
+                    Run(userOptions, CommandLineArgs.Create(args));
                 }
                 catch (System.Net.Http.HttpRequestException e)
                 {

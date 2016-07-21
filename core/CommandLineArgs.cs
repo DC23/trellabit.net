@@ -6,17 +6,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.cli
+namespace trellabit.core
 {
-    internal sealed class CommandLineArgs
+    /// <summary>
+    /// TODO: Can I merge the CommandLineArgs and UserOptions classes to create a single class that 
+    /// represents all user options, regardless of how those options are set?
+    /// </summary>
+    public sealed class CommandLineArgs
     {
+        /// <summary>
+        /// Commandline argument factory.
+        /// </summary>
+        /// <param name="args">The arguments array from the CLI entry function.</param>
+        /// <returns>
+        /// The parsed command line arguments.
+        /// </returns>
+        public static CommandLineArgs Create(string[] args)
+        {
+            var parsedArgs = new CommandLineArgs();
+            CommandLine.Parser.Default.ParseArguments(args, parsedArgs);
+            return parsedArgs;
+        }
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="CommandLineArgs" /> class from being created.
+        /// </summary>
+        private CommandLineArgs() { }
+
         /// <summary>
         /// Gets or sets the poison damage per day.
         /// </summary>
         /// <value>
         /// The poison damage per day.
         /// </value>
-        [Option('p', "poison-per-day", Required = false, DefaultValue = 10.0,
+        [Option('p', "poison-per-day", Required = false, DefaultValue = 10,
             HelpText = "The amount of HP damage to be applied by poisoning in a 24 hour period")]
         public float PoisonDamagePerDay { get; set; }
 

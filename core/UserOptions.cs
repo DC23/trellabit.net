@@ -2,7 +2,7 @@
 using NLog;
 using System.IO;
 
-namespace trellabit.cli
+namespace trellabit.core
 {
     /// <summary>
     /// User-editable options for trellabit.
@@ -11,7 +11,7 @@ namespace trellabit.cli
     /// For added security, the ini file can be encrypted once you have entered 
     /// your authentication tokens.
     /// </summary>
-    internal class UserOptions
+    public sealed class UserOptions
 	{
 		static Logger logger = LogManager.GetCurrentClassLogger();
 
