@@ -29,18 +29,6 @@ namespace trellabit.cli
                     Settings.Default.IniFileName)),
                 args);
 
-            if (!userOptions.ContainsValidTrelloApiKey)
-            {
-                logger.Warn("You must paste your Trello API key into the ini file.");
-                Exit(2);
-            }
-
-            if (!userOptions.ContainsValidTrelloToken)
-            {
-                GetTrelloAuthorisationToken(userOptions.TrelloApiKey);
-                Exit(1);
-            }
-
             if (userOptions.Valid)
             {
                 try
@@ -79,34 +67,7 @@ namespace trellabit.cli
 			logger.Debug("Done");
         }
 
-        /// <summary>
-        /// Gets the Trello authorisation token.
-        /// </summary>
-        /// <param name="trelloApiKey">The Trello API key.</param>
-        private static void GetTrelloAuthorisationToken(string trelloApiKey)
-        {
-            Uri trelloAuthUri = new Uri(
-                String.Format(Settings.Default.TrelloAuthUrl,
-                    trelloApiKey,
-                    Settings.Default.AppName,
-                    "never"));
-            // TODO: The expiry options are 1hour, 1day, 30days, never. Should this be user selectable?
 
-            if (System.Windows.Forms.MessageBox.Show(
-                Settings.Default.TrelloAuthRequest,
-                Settings.Default.TrelloAuthRequestCaption,
-                System.Windows.Forms.MessageBoxButtons.OKCancel,
-                System.Windows.Forms.MessageBoxIcon.Asterisk) == System.Windows.Forms.DialogResult.OK)
-            {
-                // TODO: can I use a different method to make the web request directly, capture the token and write it to the ini file?
-                logger.Info("Getting Trello authorisation token.");
-                System.Diagnostics.Process.Start(trelloAuthUri.ToString());
-            }
-            else
-            {
-                logger.Warn("Trello authorisation cancelled.");
-            }
-        }
 
         /// <summary>
         /// Exits the application.
