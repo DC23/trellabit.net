@@ -31,16 +31,54 @@ namespace trellabit.core
         {
             UserOptions uo = new UserOptions();
 
-            // load the ini file, or create a default
-            if (settingsFileInfo.Exists)
-                uo.IniFile.Load(settingsFileInfo.FullName);
-            else
-                WriteDefaultIniFile(settingsFileInfo, uo.IniFile);
-
-            // parse the command line
+            // Parse the command line options first, as we need the ini password
             CommandLine.Parser.Default.ParseArguments(args, uo);
 
+            IniOptions iniOptions = new IniOptions()
+            {
+                EncryptionPassword = uo.IniPassword,
+            };
+
+            // load the ini file, or create a default
+            if (File.Exists(settingsFileInfo.FullName))
+            {
+                uo.IniFile = new IniFile(iniOptions);
+                try
+                {
+                    uo.IniFile.Load(settingsFileInfo.FullName);
+                }
+                catch (System.FormatException)
+                {
+                    logger.Warn("Password supplied for decrypted ini file. Applying encryption.");
+
+                    iniOptions.EncryptionPassword = null;
+                    IniFile plainText = new IniFile(iniOptions);
+
+                    // open without a password
+                    plainText.Load(settingsFileInfo.FullName);
+
+                    // copy plainText to the encrypted instance
+                    foreach (var section in plainText.Sections)
+                        uo.IniFile.Sections.Add(section.Copy(uo.IniFile));
+
+                    // save the new instance
+                    uo.IniFile.Save(settingsFileInfo.FullName);
+                }
+            }
+            else
+            {
+                // we must clear the password, as the user cannot paste their tokens into an encrypted file
+                // Additionally, the password cannot be changed after creating the IniFile, thus
+                // the two separate instantiations (here and above).
+                iniOptions.EncryptionPassword = null;
+                uo.IniFile = new IniFile(iniOptions);
+                WriteDefaultIniFile(settingsFileInfo, uo.IniFile);
+            }
+
             // validation
+            if (uo.IniFile.Sections.Count == 0)
+                throw new InvalidUserOptionsException("No ini file sections. Either the file is empty or you supplied the wrong password for an encrypted file.");
+
             if (!uo.ContainsValidTrelloApiKey)
                 throw new InvalidCredentialsException("You must paste your Trello API key into the ini file");
 
@@ -114,12 +152,40 @@ namespace trellabit.core
         }
 
         /// <summary>
+        /// Encrypts this instance.
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        private void Encrypt(FileInfo iniFileInfo)
+        {
+        }
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="UserOptions"/> class from being created.
         /// </summary>
         private UserOptions() { }
         #endregion
 
         #region Command-line Arguments
+
+        /// <summary>
+        /// Gets or sets the ini password.
+        /// </summary>
+        /// <value>
+        /// The ini password.
+        /// </value>
+        [Option("ini-password", Required = false, DefaultValue = null,
+            HelpText = "The password used to encrypt the ini file. Once set, you need to supply the password every time or the file cannot be loaded.")]
+        public string IniPassword { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to decrypt the ini file.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the ini file will be decrypted; otherwise, <c>false</c>.
+        /// </value>
+        [Option("decrypt-ini", Required = false, DefaultValue = false,
+            HelpText = "If set to true then the ini file will be written to disk as plain text")]
+        public bool DecryptIniFile { get; set; }
 
         /// <summary>
         /// Gets or sets the poison damage per day.
@@ -222,7 +288,8 @@ namespace trellabit.core
         {
             get
             {
-                return ContainsValidTrelloApiKey
+                return IniFile.Sections.Count > 0 
+                    && ContainsValidTrelloApiKey
                     && ContainsValidTrelloToken
                     && ContainsValidHabiticaApiKey;
             }
@@ -234,7 +301,7 @@ namespace trellabit.core
         /// <value>
         /// The ini file.
         /// </value>
-        private IniFile IniFile { get; set; } = new IniFile();
+        private IniFile IniFile { get; set; }
 
         /// <summary>
         /// Gets the Trello API key.
@@ -251,6 +318,7 @@ namespace trellabit.core
         /// The Trello token.
         /// </value>
         public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value.Trim(); } }
+
         #endregion
     }
 }

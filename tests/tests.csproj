@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="core\TestUserOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,35 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cli\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cli\cli.csproj">
+      <Project>{32069475-edca-41f2-a0eb-ee530b522c44}</Project>
+      <Name>cli</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\core\core.csproj">
+      <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
+      <Name>core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data.habitica\data.habitica.csproj">
+      <Project>{2f924b72-3381-4939-b657-06a752715c57}</Project>
+      <Name>data.habitica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data.trello\data.trello.csproj">
+      <Project>{23d4c5e0-d925-4ceb-a575-cb8231de521e}</Project>
+      <Name>data.trello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data\data.csproj">
+      <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
+      <Name>data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\logic\logic.csproj">
+      <Project>{ce2cdbc4-3462-4c95-8371-f43a75f037ae}</Project>
+      <Name>logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
