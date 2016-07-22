@@ -62,5 +62,24 @@ namespace trellabit.tests.core
             // test that the file is now encrypted
             Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(iniPath, new string[0]));
         }
+
+        [Test]
+        public void TestDecryptToPlainText()
+        {
+            var iniPath = GetWriteableFileInfo("testDecrypt.ini", delete: true);
+            UserOptions options = UserOptions.Create(iniPath, new string[0]);
+
+            // encrypt it
+            options = UserOptions.Create(iniPath, new string[] { "--ini-password", "zzz" });
+
+            // test that the file is now encrypted
+            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(iniPath, new string[0]));
+            
+            // decrypt it
+            options = UserOptions.Create(iniPath, new string[] { "--ini-password", "zzz", "--decrypt-ini" });
+
+            // test that the file now opens without a password
+            UserOptions.Create(iniPath, new string[0]);
+        }
     }
 }

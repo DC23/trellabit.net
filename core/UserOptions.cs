@@ -46,6 +46,18 @@ namespace trellabit.core
                 try
                 {
                     uo.IniFile.Load(settingsFileInfo.FullName);
+
+                    if (uo.DecryptIniFile)
+                    {
+                        logger.Warn("Decrypting ini file");
+
+                        // create a plain text ini, copy the sections, and save
+                        iniOptions.EncryptionPassword = null;
+                        IniFile plainText = new IniFile(iniOptions);
+                        foreach (var section in uo.IniFile.Sections)
+                            plainText.Sections.Add(section.Copy(plainText));
+                        plainText.Save(settingsFileInfo.FullName);
+                    }
                 }
                 catch (System.FormatException)
                 {
@@ -76,8 +88,8 @@ namespace trellabit.core
             }
 
             // validation
-            if (uo.IniFile.Sections.Count == 0)
-                throw new InvalidUserOptionsException("No ini file sections. Either the file is empty or you supplied the wrong password for an encrypted file.");
+            if (uo.IniFile.Sections.Count == 1)
+                throw new InvalidUserOptionsException("Incorrect ini file sections. Either the file is empty or you supplied the wrong password for an encrypted file.");
 
             if (!uo.ContainsValidTrelloApiKey)
                 throw new InvalidCredentialsException("You must paste your Trello API key into the ini file");
@@ -288,7 +300,7 @@ namespace trellabit.core
         {
             get
             {
-                return IniFile.Sections.Count > 0 
+                return IniFile.Sections.Count > 0
                     && ContainsValidTrelloApiKey
                     && ContainsValidTrelloToken
                     && ContainsValidHabiticaApiKey;
