@@ -10,7 +10,7 @@ using Xunit;
 
 namespace trellabit.tests.core
 {
-    class TestUserOptions
+    public class TestUserOptions
     {
         private string GetWritableFileName(string baseName)
         {
