@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,22 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Moq, Version=4.5.16.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.5.16\lib\net45\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NUnit.Should, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.Should.1.0.2.0\lib\NET30\NUnit.Should.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +39,18 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.5.16.0, Culture=neutral, PublicKeyToken=69f491c39445e920">
+      <HintPath>..\packages\Moq.4.5.16\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb">
+      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnit.Should, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\NUnit.Should.1.0.2.0\lib\NET30\NUnit.Should.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="core\TestUserOptions.cs" />
@@ -67,29 +63,29 @@
     <Folder Include="cli\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cli\cli.csproj">
-      <Project>{32069475-edca-41f2-a0eb-ee530b522c44}</Project>
-      <Name>cli</Name>
-    </ProjectReference>
     <ProjectReference Include="..\core\core.csproj">
-      <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
+      <Project>{7486EB8A-8084-4B36-949B-9876517CAFD1}</Project>
       <Name>core</Name>
     </ProjectReference>
     <ProjectReference Include="..\data.habitica\data.habitica.csproj">
-      <Project>{2f924b72-3381-4939-b657-06a752715c57}</Project>
+      <Project>{2F924B72-3381-4939-B657-06A752715C57}</Project>
       <Name>data.habitica</Name>
     </ProjectReference>
     <ProjectReference Include="..\data.trello\data.trello.csproj">
-      <Project>{23d4c5e0-d925-4ceb-a575-cb8231de521e}</Project>
+      <Project>{23D4C5E0-D925-4CEB-A575-CB8231DE521E}</Project>
       <Name>data.trello</Name>
     </ProjectReference>
     <ProjectReference Include="..\data\data.csproj">
-      <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
+      <Project>{801C9077-30F1-4E57-8126-877F5ECC6DE8}</Project>
       <Name>data</Name>
     </ProjectReference>
     <ProjectReference Include="..\logic\logic.csproj">
-      <Project>{ce2cdbc4-3462-4c95-8371-f43a75f037ae}</Project>
+      <Project>{CE2CDBC4-3462-4C95-8371-F43A75F037AE}</Project>
       <Name>logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cli\cli.csproj">
+      <Project>{32069475-EDCA-41F2-A0EB-EE530B522C44}</Project>
+      <Name>cli</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

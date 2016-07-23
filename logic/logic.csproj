@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +39,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
+      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="scenarios\Poisoned.cs" />
@@ -50,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj">
-      <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
+      <Project>{7486EB8A-8084-4B36-949B-9876517CAFD1}</Project>
       <Name>core</Name>
     </ProjectReference>
     <ProjectReference Include="..\data\data.csproj">
-      <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
+      <Project>{801C9077-30F1-4E57-8126-877F5ECC6DE8}</Project>
       <Name>data</Name>
     </ProjectReference>
   </ItemGroup>

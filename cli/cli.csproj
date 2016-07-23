@@ -61,34 +61,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj">
-      <Project>{7486eb8a-8084-4b36-949b-9876517cafd1}</Project>
+      <Project>{7486EB8A-8084-4B36-949B-9876517CAFD1}</Project>
       <Name>core</Name>
     </ProjectReference>
     <ProjectReference Include="..\data.habitica\data.habitica.csproj">
-      <Project>{2f924b72-3381-4939-b657-06a752715c57}</Project>
+      <Project>{2F924B72-3381-4939-B657-06A752715C57}</Project>
       <Name>data.habitica</Name>
     </ProjectReference>
     <ProjectReference Include="..\data\data.csproj">
-      <Project>{801c9077-30f1-4e57-8126-877f5ecc6de8}</Project>
+      <Project>{801C9077-30F1-4E57-8126-877F5ECC6DE8}</Project>
       <Name>data</Name>
     </ProjectReference>
     <ProjectReference Include="..\logic\logic.csproj">
-      <Project>{ce2cdbc4-3462-4c95-8371-f43a75f037ae}</Project>
+      <Project>{CE2CDBC4-3462-4C95-8371-F43A75F037AE}</Project>
       <Name>logic</Name>
     </ProjectReference>
     <ProjectReference Include="..\data.trello\data.trello.csproj">
-      <Project>{23d4c5e0-d925-4ceb-a575-cb8231de521e}</Project>
+      <Project>{23D4C5E0-D925-4CEB-A575-CB8231DE521E}</Project>
       <Name>data.trello</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
