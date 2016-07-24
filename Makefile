@@ -11,9 +11,9 @@ SOLUTION=trellabit.net.sln
 restore:
 	nuget restore $(SOLUTION)
 
-.PHONY: update
-update:
-	nuget update $(SOLUTION)
+#.PHONY: update
+#update:
+	#nuget update $(SOLUTION)
 
 .PHONY: build
 build:
