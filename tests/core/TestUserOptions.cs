@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 using trellabit.core;
 using System.IO;
 using System.Reflection;
+using Xunit;
 
 namespace trellabit.tests.core
 {
-    [TestFixture]
-    class TestUserOptions
+    public class TestUserOptions
     {
         private string GetWritableFileName(string baseName)
         {
@@ -29,7 +28,7 @@ namespace trellabit.tests.core
             return fi;
         }
 
-        [Test]
+        [Fact]
         public void TestDefaultIniCreatedWhenFileDoesntExist()
         {
             // we want a temp file name in a writable location
@@ -44,10 +43,10 @@ namespace trellabit.tests.core
             // check for validity by opening the newly minted file
             options = UserOptions.Create(iniPath, new string[0]);
 
-            Assert.IsNotNull(options);
+            Assert.NotNull(options);
         }
 
-        [Test]
+        [Fact]
         public void TestEncryptPlainTextFile()
         {
             // we want a temp file name but no actual file
@@ -63,7 +62,7 @@ namespace trellabit.tests.core
             Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(iniPath, new string[0]));
         }
 
-        [Test]
+        [Fact]
         public void TestDecryptToPlainText()
         {
             var iniPath = GetWriteableFileInfo("testDecrypt.ini", delete: true);
@@ -74,12 +73,13 @@ namespace trellabit.tests.core
 
             // test that the file is now encrypted
             Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(iniPath, new string[0]));
-            
+
             // decrypt it
             options = UserOptions.Create(iniPath, new string[] { "--ini-password", "zzz", "--decrypt-ini" });
 
             // test that the file now opens without a password
-            UserOptions.Create(iniPath, new string[0]);
+            options = UserOptions.Create(iniPath, new string[0]);
+            Assert.NotNull(options);
         }
     }
 }
