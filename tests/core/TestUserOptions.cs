@@ -56,7 +56,7 @@ namespace trellabit.tests.core
         }
 
         [Fact]
-        public void TestDefaultIniCreatedWhenFileDoesntExist()
+        public void DefaultIniCreatedWhenFileDoesntExist()
         {
             // we want a temp file name in a writable location
             var ini = GetWriteableFileInfo("defaultinicreated.ini", delete: true);
@@ -78,7 +78,7 @@ namespace trellabit.tests.core
         }
 
         [Fact]
-        public void TestEncryptionOfPlainText()
+        public void EncryptionOfPlainText()
         {
             // Create a plaintext ini file, then open it with UserOptions
             var ini = GetTestIni("testEncrypt.ini");
@@ -92,7 +92,7 @@ namespace trellabit.tests.core
         }
 
         [Fact]
-        public void TestEncryptionWrongPassword()
+        public void EncryptionWrongPassword()
         {
             // Create an encrypted ini file from plain text
             var ini = GetTestIni("testEncryptedRead.ini");
@@ -104,7 +104,7 @@ namespace trellabit.tests.core
         }
 
         [Fact]
-        public void TestDecryption()
+        public void Decryption()
         {
             // Create encrypted ini
             var ini = GetTestIni("testDecrypt.ini");
@@ -126,7 +126,7 @@ namespace trellabit.tests.core
         }
 
         [Fact]
-        public void TestReadFromEncryptedIni()
+        public void ReadFromEncryptedIni()
         {
             // Create an encrypted ini file from plain text
             var ini = GetTestIni("testEncryptedRead.ini");
@@ -139,6 +139,49 @@ namespace trellabit.tests.core
             Assert.Equal("ttoken", actual.TrelloToken);
             Assert.Equal("hab_id", actual.HabiticaUserId);
             Assert.Equal("hab_token", actual.HabiticaApiToken);
+        }
+
+        [Fact]
+        public void MissingIniVersionKey()
+        {
+            var ini = GetWriteableFileInfo("missingIniVersion.ini");
+            using (var writer = ini.CreateText())
+            {
+                writer.Write($@"
+                [Trello]
+                API_Key=blah
+                auth_token=trello_token
+
+                [Habitica]
+                User_ID=habID
+                API_Token=habAPI
+                ");
+            }
+
+            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(ini, new string[0]));
+        }
+
+        [Fact]
+        public void IncorrectIniVersionValue()
+        {
+            var ini = GetWriteableFileInfo("incorrectIniVersion.ini");
+            using (var writer = ini.CreateText())
+            {
+                writer.Write($@"
+                [Metadata]
+                ini_version=1
+
+                [Trello]
+                API_Key=blah
+                auth_token=trello_token
+
+                [Habitica]
+                User_ID=habID
+                API_Token=habAPI
+                ");
+            }
+
+            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(ini, new string[0]));
         }
     }
 }

@@ -97,11 +97,18 @@ namespace trellabit.core
             if (uo.IniFile.Sections.Count == 1)
                 throw new InvalidUserOptionsException("Incorrect ini file sections.");
 
-            if (int.Parse(uo.IniFile.Sections["Metadata"].Keys["ini_version"].Value.Trim()) != INI_VERSION)
-                throw new InvalidUserOptionsException("Incorrect ini file version.");
+            try
+            {
+                if (int.Parse(uo.IniFile.Sections["Metadata"].Keys["ini_version"].Value.Trim()) != INI_VERSION)
+                    throw new InvalidUserOptionsException("Incorrect ini file version.");
+            }
+            catch (NullReferenceException e)
+            {
+                throw new InvalidUserOptionsException("Missing ini file version field.", e);
+            }
 
             return uo;
-        }
+            }
 
         /// <summary>
         /// Gets the Trello authorisation token.
