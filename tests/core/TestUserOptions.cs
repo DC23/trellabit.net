@@ -28,7 +28,12 @@ namespace trellabit.tests.core
             return fi;
         }
 
-        private FileInfo GetTestIni(string filename, string trello_key, string trello_token)
+        private FileInfo GetTestIni(
+            string filename,
+            string trello_key = "tkey",
+            string trello_token = "ttoken",
+            string habitica_id = "hab_id",
+            string habitica_token = "hab_token")
         {
             var ini = GetWriteableFileInfo(filename);
             using (var writer = ini.CreateText())
@@ -39,6 +44,8 @@ namespace trellabit.tests.core
                 auth_token={trello_token}
 
                 [Habitica]
+                User_ID={habitica_id}
+                API_Token={habitica_token}
                 ");
             }
 
@@ -49,27 +56,29 @@ namespace trellabit.tests.core
         public void TestDefaultIniCreatedWhenFileDoesntExist()
         {
             // we want a temp file name in a writable location
-            var iniPath = GetWriteableFileInfo("defaultinicreated.ini", delete: true);
-            Assert.False(File.Exists(iniPath.FullName));
+            var ini = GetWriteableFileInfo("defaultinicreated.ini", delete: true);
+            Assert.False(File.Exists(ini.FullName));
 
             // get UserOptions to create a default file
-            UserOptions options = UserOptions.Create(iniPath, new string[0]);
+            var options = UserOptions.Create(ini, new string[0]);
 
-            Assert.True(File.Exists(iniPath.FullName));
+            Assert.True(File.Exists(ini.FullName));
 
             // check for validity by opening the newly minted file
-            options = UserOptions.Create(iniPath, new string[0]);
+            options = UserOptions.Create(ini, new string[0]);
 
             Assert.NotNull(options);
             Assert.Equal("", options.TrelloApiKey);
             Assert.Equal("", options.TrelloToken);
+            Assert.Equal("", options.HabiticaUserId);
+            Assert.Equal("", options.HabiticaApiToken);
         }
 
         [Fact]
         public void TestEncryptionOfPlainText()
         {
             // Create a plaintext ini file, then open it with UserOptions
-            var ini = GetTestIni("testEncrypt.ini", trello_key: "tkey", trello_token: "ttoken");
+            var ini = GetTestIni("testEncrypt.ini");
             UserOptions.Create(ini, new string[0]);
 
             // Now encrypt it
@@ -83,7 +92,7 @@ namespace trellabit.tests.core
         public void TestEncryptionWrongPassword()
         {
             // Create an encrypted ini file from plain text
-            var ini = GetTestIni("testEncryptedRead.ini", trello_key: "tkey", trello_token: "ttoken");
+            var ini = GetTestIni("testEncryptedRead.ini");
             UserOptions.Create(ini, new string[] { "--ini-password", "fiffer feffer feff" });
 
             // Try opening with the wrong password
@@ -95,7 +104,7 @@ namespace trellabit.tests.core
         public void TestDecryption()
         {
             // Create encrypted ini
-            var ini = GetTestIni("testDecrypt.ini", trello_key: "tkey", trello_token: "ttoken");
+            var ini = GetTestIni("testDecrypt.ini");
             UserOptions.Create(ini, new string[] { "--ini-password", "zzz" });
 
             // test that the file is now encrypted
@@ -109,13 +118,15 @@ namespace trellabit.tests.core
 
             Assert.Equal("tkey", actual.TrelloApiKey);
             Assert.Equal("ttoken", actual.TrelloToken);
+            Assert.Equal("hab_id", actual.HabiticaUserId);
+            Assert.Equal("hab_token", actual.HabiticaApiToken);
         }
 
         [Fact]
         public void TestReadFromEncryptedIni()
         {
             // Create an encrypted ini file from plain text
-            var ini = GetTestIni("testEncryptedRead.ini", trello_key: "tkey", trello_token: "ttoken");
+            var ini = GetTestIni("testEncryptedRead.ini");
             UserOptions.Create(ini, new string[] { "--ini-password", "zzz" });
 
             // open it from the encrypted file
@@ -123,6 +134,8 @@ namespace trellabit.tests.core
 
             Assert.Equal("tkey", actual.TrelloApiKey);
             Assert.Equal("ttoken", actual.TrelloToken);
+            Assert.Equal("hab_id", actual.HabiticaUserId);
+            Assert.Equal("hab_token", actual.HabiticaApiToken);
         }
     }
 }

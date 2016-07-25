@@ -94,19 +94,7 @@ namespace trellabit.core
 
             // validation
             if (uo.IniFile.Sections.Count == 1)
-                throw new InvalidUserOptionsException("Incorrect ini file sections. Either the file is empty or you supplied the wrong password for an encrypted file.");
-
-            if (!uo.ContainsValidTrelloApiKey)
-                throw new InvalidCredentialsException("You must paste your Trello API key into the ini file");
-
-            if (!uo.ContainsValidTrelloToken)
-            {
-                GetTrelloAuthorisationToken(uo.TrelloApiKey);
-                throw new InvalidCredentialsException("You must paste the Trello authorisation token into the ini file");
-            }
-
-            if (!uo.Valid)
-                throw new InvalidUserOptionsException();
+                throw new InvalidUserOptionsException("Incorrect ini file sections.");
 
             return uo;
         }
@@ -164,6 +152,12 @@ namespace trellabit.core
             IniSection habiticaSection = iniFile.Sections.Add("Habitica");
             habiticaSection.TrailingComment.EmptyLinesBefore = 1;
             habiticaSection.TrailingComment.Text = " Habitica Authentication";
+
+            IniKey habiticaUserId = habiticaSection.Keys.Add("User_ID", "    ");
+            trelloApiKey.LeadingComment.Text = " Visit https://habitica.com/#/options/settings/api to get your Habitica User ID";
+
+            IniKey habiticaApiToken = habiticaSection.Keys.Add("API_Token", "    ");
+            habiticaApiToken.LeadingComment.Text = " Visit https://habitica.com/#/options/settings/api to get your Habitica API token";
 
             iniFile.Save(settingsFileInfo.FullName);
         }
@@ -276,18 +270,50 @@ namespace trellabit.core
         }
 
         /// <summary>
-        /// Gets a value indicating whether this instance contains a valid Habitica token.
+        /// Gets a value indicating whether this instance contains a valid Habitica API token.
         /// </summary>
         /// <value>
-        /// <c>true</c> if this instance contains a valid Habitica token; otherwise, <c>false</c>.
+        /// <c>true</c> if this instance contains a valid Habitica API token; otherwise, <c>false</c>.
         /// </value>
-        public bool ContainsValidHabiticaApiKey
+        public bool ContainsValidHabiticaApiToken
         {
             get
             {
                 if (!IniFile.Sections.Contains("Habitica"))
                 {
                     logger.Warn("Habitica section missing");
+                    return false;
+                }
+
+                if (String.IsNullOrEmpty(HabiticaApiToken))
+                {
+                    logger.Warn("Habitica API Token missing");
+                    return false;
+                }
+
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance contains a valid Habitica user ID.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance contains a valid Habitica user ID; otherwise, <c>false</c>.
+        /// </value>
+        public bool ContainsValidHabiticaUserId
+        {
+            get
+            {
+                if (!IniFile.Sections.Contains("Habitica"))
+                {
+                    logger.Warn("Habitica section missing");
+                    return false;
+                }
+
+                if (String.IsNullOrEmpty(HabiticaUserId))
+                {
+                    logger.Warn("Habitica user ID missing");
                     return false;
                 }
 
@@ -308,7 +334,8 @@ namespace trellabit.core
                 return IniFile.Sections.Count > 0
                     && ContainsValidTrelloApiKey
                     && ContainsValidTrelloToken
-                    && ContainsValidHabiticaApiKey;
+                    && ContainsValidHabiticaApiToken
+                    && ContainsValidHabiticaUserId;
             }
         }
 
@@ -335,6 +362,22 @@ namespace trellabit.core
         /// The Trello token.
         /// </value>
         public string TrelloToken { get { return IniFile.Sections["Trello"].Keys["auth_token"].Value.Trim(); } }
+
+        /// <summary>
+        /// Gets the Habitica user identifier.
+        /// </summary>
+        /// <value>
+        /// The Habitica user identifier.
+        /// </value>
+        public string HabiticaUserId { get { return IniFile.Sections["Habitica"].Keys["User_ID"].Value.Trim(); } }
+
+        /// <summary>
+        /// Gets the Habitica API token.
+        /// </summary>
+        /// <value>
+        /// The Habitica API token.
+        /// </value>
+        public string HabiticaApiToken { get { return IniFile.Sections["Habitica"].Keys["API_Token"].Value.Trim(); } }
 
         #endregion
     }
