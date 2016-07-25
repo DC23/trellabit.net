@@ -30,10 +30,10 @@ clean:
 
 .PHONY: tests
 tests: build
-	mono $(RUNNER) $(RUNNER_FLAGS) $(DEBUG_ASSEMBLIES)
+	mono $(RUNNER) $(DEBUG_ASSEMBLIES) $(RUNNER_FLAGS)
 
 .PHONY: release
 release:
 	xbuild $(XBUILD_FLAGS) /t:Clean /p:Configuration=Release $(SOLUTION)
 	xbuild $(XBUILD_FLAGS) /t:Build /p:Configuration=Release $(SOLUTION)
-	mono $(RUNNER) $(RUNNER_FLAGS) $(RELEASE_ASSEMBLIES)
+	mono $(RUNNER) $(RELEASE_ASSEMBLIES) $(RUNNER_FLAGS)
