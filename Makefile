@@ -3,7 +3,7 @@
 
 NUGET=./packages/NuGet.CommandLine.3.4.3/tools/NuGet.exe
 RUNNER=./packages/xunit.runner.console.2.1.0/tools/xunit.console.exe
-RUNNER_FLAGS=
+RUNNER_FLAGS=-verbose -nocolor
 DEBUG_ASSEMBLIES=./tests/bin/Debug/trellabit.tests.dll
 RELEASE_ASSEMBLIES=./tests/bin/Release/trellabit.tests.dll
 SOLUTION=trellabit.net.sln
