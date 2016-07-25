@@ -39,6 +39,9 @@ namespace trellabit.tests.core
             using (var writer = ini.CreateText())
             {
                 writer.Write($@"
+                [Metadata]
+                ini_version=2
+
                 [Trello]
                 API_Key={trello_key}
                 auth_token={trello_token}

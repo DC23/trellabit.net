@@ -19,6 +19,7 @@ namespace trellabit.core
     public sealed class UserOptions
     {
         static Logger logger = LogManager.GetCurrentClassLogger();
+        const int INI_VERSION = 2;
 
         #region Creation
         /// <summary>
@@ -96,6 +97,9 @@ namespace trellabit.core
             if (uo.IniFile.Sections.Count == 1)
                 throw new InvalidUserOptionsException("Incorrect ini file sections.");
 
+            if (int.Parse(uo.IniFile.Sections["Metadata"].Keys["ini_version"].Value.Trim()) != INI_VERSION)
+                throw new InvalidUserOptionsException("Incorrect ini file version.");
+
             return uo;
         }
 
@@ -138,8 +142,13 @@ namespace trellabit.core
             logger.Warn(@"User options file '{0}' not found. A default has been generated. You will need to enter your authentication keys as described in the README.",
                 settingsFileInfo.FullName);
 
+            // metadata section
+            IniSection mdSection = iniFile.Sections.Add("Metadata");
+            var iniVersionKey = mdSection.Keys.Add("ini_version", INI_VERSION.ToString());
+
             // Trello section
             IniSection trelloSection = iniFile.Sections.Add("Trello");
+            trelloSection.TrailingComment.EmptyLinesBefore = 1;
             trelloSection.TrailingComment.Text = " Trello Authentication";
 
             IniKey trelloApiKey = trelloSection.Keys.Add("API_Key", "    ");
