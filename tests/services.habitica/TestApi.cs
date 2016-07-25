@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.data.habitica;
+using trellabit.services.habitica;
 using Xunit;
 
 namespace trellabit.tests.data.habitica
@@ -13,7 +13,7 @@ namespace trellabit.tests.data.habitica
         [Fact]
         public void TestGitHubApi()
         {
-            var user = GitHubService.GetUser("DC23");
+            //var user = GitHubService.GetUser("DC23");
         }
     }
 }

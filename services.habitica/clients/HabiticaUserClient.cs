@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.data.habitica.clients
+namespace trellabit.services.habitica.clients
 {
     /// <summary>
     /// The Habitica user client.

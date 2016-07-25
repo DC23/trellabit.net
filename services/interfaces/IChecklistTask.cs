@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.data;
+using trellabit.services;
 
-namespace trellabit.data.interfaces
+namespace trellabit.services.interfaces
 {
     /// <summary>
     /// A task that has a checklist.

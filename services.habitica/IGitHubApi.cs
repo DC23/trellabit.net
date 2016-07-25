@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.data.habitica
+namespace trellabit.services.habitica
 {
     public class User
     {

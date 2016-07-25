@@ -37,11 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.6\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c">
+      <HintPath>..\packages\NLog.4.3.6\lib\net45\NLog.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -65,21 +64,9 @@
       <Project>{7486EB8A-8084-4B36-949B-9876517CAFD1}</Project>
       <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\data.habitica\services.habitica.csproj">
-      <Project>{2F924B72-3381-4939-B657-06A752715C57}</Project>
-      <Name>services.habitica</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\data\services.csproj">
-      <Project>{801C9077-30F1-4E57-8126-877F5ECC6DE8}</Project>
-      <Name>services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\logic\logic.csproj">
       <Project>{CE2CDBC4-3462-4C95-8371-F43A75F037AE}</Project>
       <Name>logic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\data.trello\services.trello.csproj">
-      <Project>{23D4C5E0-D925-4CEB-A575-CB8231DE521E}</Project>
-      <Name>services.trello</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

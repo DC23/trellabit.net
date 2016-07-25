@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.data;
+using trellabit.services;
 
-namespace trellabit.data.interfaces
+namespace trellabit.services.interfaces
 {
     /// <summary>
     /// A Trellabit task.
@@ -33,7 +33,7 @@ namespace trellabit.data.interfaces
         /// Set to null to indicate no due date.
         /// </summary>
         /// <value>
-        /// The due date, or null to clear the due date.
+        /// The due date, or null to indicate no due date.
         /// </value>
         DateTime DueDate { get; set; }
 

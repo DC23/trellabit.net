@@ -7,7 +7,7 @@ RUNNER_FLAGS=
 DEBUG_ASSEMBLIES=./tests/bin/Debug/trellabit.tests.dll
 RELEASE_ASSEMBLIES=./tests/bin/Release/trellabit.tests.dll
 SOLUTION=trellabit.net.sln
-XBUILD_FLAGS=/verbosity:minimal
+XBUILD_FLAGS=/verbosity:normal
 
 .PHONY: all
 all: clean build tests

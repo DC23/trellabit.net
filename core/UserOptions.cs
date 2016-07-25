@@ -151,7 +151,7 @@ namespace trellabit.core
 
             // metadata section
             IniSection mdSection = iniFile.Sections.Add("Metadata");
-            var iniVersionKey = mdSection.Keys.Add("ini_version", INI_VERSION.ToString());
+            mdSection.Keys.Add("ini_version", INI_VERSION.ToString());
 
             // Trello section
             IniSection trelloSection = iniFile.Sections.Add("Trello");
@@ -169,7 +169,7 @@ namespace trellabit.core
             habiticaSection.TrailingComment.EmptyLinesBefore = 1;
             habiticaSection.TrailingComment.Text = " Habitica Authentication";
 
-            IniKey habiticaUserId = habiticaSection.Keys.Add("User_ID", "    ");
+            habiticaSection.Keys.Add("User_ID", "    ");
             trelloApiKey.LeadingComment.Text = " Visit https://habitica.com/#/options/settings/api to get your Habitica User ID";
 
             IniKey habiticaApiToken = habiticaSection.Keys.Add("API_Token", "    ");

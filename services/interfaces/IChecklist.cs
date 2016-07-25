@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.data.interfaces
+namespace trellabit.services.interfaces
 {
     /// <summary>
-    /// A single checklist item.
+    /// A named checklist.
     /// </summary>
-    interface IChecklistItem
+    interface IChecklist
     {
         /// <summary>
-        /// Gets or sets the checklist item name.
+        /// Gets or sets the name.
         /// </summary>
         /// <value>
         /// The name.
@@ -20,11 +20,11 @@ namespace trellabit.data.interfaces
         string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this instance is checked.
+        /// The checklist items.
         /// </summary>
         /// <value>
-        /// <c>true</c> if this instance is checked; otherwise, <c>false</c>.
+        /// The items.
         /// </value>
-        bool IsChecked { get; set; }
+        IList<IChecklistItem> Items { get; }
     }
 }

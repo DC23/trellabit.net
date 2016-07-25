@@ -14,11 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "services", "data\services.csproj", "{801C9077-30F1-4E57-8126-877F5ECC6DE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "services", "services\services.csproj", "{801C9077-30F1-4E57-8126-877F5ECC6DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "services.trello", "data.trello\services.trello.csproj", "{23D4C5E0-D925-4CEB-A575-CB8231DE521E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "services.trello", "services.trello\services.trello.csproj", "{23D4C5E0-D925-4CEB-A575-CB8231DE521E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "services.habitica", "data.habitica\services.habitica.csproj", "{2F924B72-3381-4939-B657-06A752715C57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "services.habitica", "services.habitica\services.habitica.csproj", "{2F924B72-3381-4939-B657-06A752715C57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logic", "logic\logic.csproj", "{CE2CDBC4-3462-4C95-8371-F43A75F037AE}"
 EndProject
