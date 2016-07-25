@@ -29,6 +29,9 @@ This project has been tested on the following platforms:
 
 * Visual Studio 2015 Community Edition, on both Windows 10 and Windows 7.
 * Linux (Arch, LMDE) with Monodevelop 5 and Mono 4.4.0.
+  * There is also a Makefile for use on Linux that will let you work without MonoDevelop. 
+It is also required for running the XUnit tests, as MonoDevelop integration won't be available
+until version 6.
 
 ## A Note about MonoDevelop
 By default, [MonoDevelop](http://www.monodevelop.com/) writes console output
@@ -66,7 +69,7 @@ but development appears to have stalled in 2014 which means no support for the v
 
 ## Logic Layer
 * `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
-    * Operates on the trellabit.model interfaces to keep it insulated from backend details such as the 3rd party APIs.
+    * Operates on the trellabit.data interfaces to keep it insulated from backend details such as the 3rd party APIs.
 
 ## User Interface Layer
 * `trellabit.cli`: The command-line interface wrapper. Provides a CLI UI to trellabit.operations.
@@ -95,7 +98,7 @@ adding new services at a later date. Of course, my initial interface design will
 focus on my current goal of Trello / Habitica connections. It remains to be seen
 how well other services may map to this feature set.
 
-For things like trellabit.model.interfaces.ITask.Difficulty, Habitica implements
+For things like trellabit.data.interfaces.ITask.Difficulty, Habitica implements
 this directly, and Trello can implement it as hidden labels applied to cards
 (with a default for other cases).  Similar ideas should allow a sufficiently
 rich set of attributes on Trello cards for mapping to Habitica in a useful way.
