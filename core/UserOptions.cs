@@ -76,6 +76,11 @@ namespace trellabit.core
                     // save the new instance
                     uo.IniFile.Save(settingsFileInfo.FullName);
                 }
+                catch (System.Security.Cryptography.CryptographicException e)
+                {
+                    logger.Error(e);
+                    throw new InvalidIniPasswordException("Invalid password for encrypted ini file", e);
+                }
             }
             else
             {

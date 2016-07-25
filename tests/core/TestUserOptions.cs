@@ -28,6 +28,23 @@ namespace trellabit.tests.core
             return fi;
         }
 
+        private FileInfo GetTestIni(string filename, string trello_key, string trello_token)
+        {
+            var ini = GetWriteableFileInfo(filename);
+            using (var writer = ini.CreateText())
+            {
+                writer.Write($@"
+                [Trello]
+                API_Key={trello_key}
+                auth_token={trello_token}
+
+                [Habitica]
+                ");
+            }
+
+            return ini;
+        }
+
         [Fact]
         public void TestDefaultIniCreatedWhenFileDoesntExist()
         {
@@ -44,42 +61,68 @@ namespace trellabit.tests.core
             options = UserOptions.Create(iniPath, new string[0]);
 
             Assert.NotNull(options);
+            Assert.Equal("", options.TrelloApiKey);
+            Assert.Equal("", options.TrelloToken);
         }
 
         [Fact]
-        public void TestEncryptPlainTextFile()
+        public void TestEncryptionOfPlainText()
         {
-            // we want a temp file name but no actual file
-            var iniPath = GetWriteableFileInfo("testEncrypt.ini", delete: true);
+            // Create a plaintext ini file, then open it with UserOptions
+            var ini = GetTestIni("testEncrypt.ini", trello_key: "tkey", trello_token: "ttoken");
+            UserOptions.Create(ini, new string[0]);
 
-            // get UserOptions to create a default file
-            UserOptions options = UserOptions.Create(iniPath, new string[0]);
+            // Now encrypt it
+            UserOptions.Create(ini, new string[] { "--ini-password", "zzz" });
 
-            // open a second UserOptions with the default file and a password
-            options = UserOptions.Create(iniPath, new string[] { "--ini-password", "zzz" });
-
-            // test that the file is now encrypted
-            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(iniPath, new string[0]));
+            // test that the file is now encrypted by trying to open without a password
+            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(ini, new string[0]));
         }
 
         [Fact]
-        public void TestDecryptToPlainText()
+        public void TestEncryptionWrongPassword()
         {
-            var iniPath = GetWriteableFileInfo("testDecrypt.ini", delete: true);
-            UserOptions options = UserOptions.Create(iniPath, new string[0]);
+            // Create an encrypted ini file from plain text
+            var ini = GetTestIni("testEncryptedRead.ini", trello_key: "tkey", trello_token: "ttoken");
+            UserOptions.Create(ini, new string[] { "--ini-password", "fiffer feffer feff" });
 
-            // encrypt it
-            options = UserOptions.Create(iniPath, new string[] { "--ini-password", "zzz" });
+            // Try opening with the wrong password
+            Assert.Throws<InvalidIniPasswordException>(
+                () => UserOptions.Create(ini, new string[] { "--ini-password", "fiffer" }));
+        }
+
+        [Fact]
+        public void TestDecryption()
+        {
+            // Create encrypted ini
+            var ini = GetTestIni("testDecrypt.ini", trello_key: "tkey", trello_token: "ttoken");
+            UserOptions.Create(ini, new string[] { "--ini-password", "zzz" });
 
             // test that the file is now encrypted
-            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(iniPath, new string[0]));
+            Assert.Throws<InvalidUserOptionsException>(() => UserOptions.Create(ini, new string[0]));
 
             // decrypt it
-            options = UserOptions.Create(iniPath, new string[] { "--ini-password", "zzz", "--decrypt-ini" });
+            UserOptions.Create(ini, new string[] { "--ini-password", "zzz", "--decrypt-ini" });
 
-            // test that the file now opens without a password
-            options = UserOptions.Create(iniPath, new string[0]);
-            Assert.NotNull(options);
+            // Open without password
+            var actual = UserOptions.Create(ini, new string[0]);
+
+            Assert.Equal("tkey", actual.TrelloApiKey);
+            Assert.Equal("ttoken", actual.TrelloToken);
+        }
+
+        [Fact]
+        public void TestReadFromEncryptedIni()
+        {
+            // Create an encrypted ini file from plain text
+            var ini = GetTestIni("testEncryptedRead.ini", trello_key: "tkey", trello_token: "ttoken");
+            UserOptions.Create(ini, new string[] { "--ini-password", "zzz" });
+
+            // open it from the encrypted file
+            var actual = UserOptions.Create(ini, new string[] { "--ini-password", "zzz" });
+
+            Assert.Equal("tkey", actual.TrelloApiKey);
+            Assert.Equal("ttoken", actual.TrelloToken);
         }
     }
 }
