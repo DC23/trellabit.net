@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="core\TestUserOptions.cs" />
-    <Compile Include="data.habitica\TestApi.cs" />
+    <Compile Include="services.habitica\TestApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
