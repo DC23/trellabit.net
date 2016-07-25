@@ -61,14 +61,18 @@
       <Project>{7486EB8A-8084-4B36-949B-9876517CAFD1}</Project>
       <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\data\data.csproj">
+    <ProjectReference Include="..\data\services.csproj">
       <Project>{801C9077-30F1-4E57-8126-877F5ECC6DE8}</Project>
-      <Name>data</Name>
+      <Name>services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="clients\" />
+    <Folder Include="interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

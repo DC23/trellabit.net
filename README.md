@@ -54,10 +54,10 @@ root solution directory.
 I am using a somewhat traditional tiered architecture, with a data access layer,
 business logic layer, and UI layer.
 
-## Data Access Layer
-* `trellabit.data`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
-* `trellabit.data.trello`: The Trello-specific data service implementation.
-* `trellabit.data.habitica`: The Habitica-specific data service implementation.
+## Services / Data Access Layer
+* `trellabit.services`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
+* `trellabit.services.trello`: The Trello-specific data service implementation.
+* `trellabit.services.habitica`: The Habitica-specific data service implementation.
 
 The key roles of the service implementations are:
 * map the data model to the specific third-party service
@@ -65,7 +65,7 @@ The key roles of the service implementations are:
 
 I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, 
 but development appears to have stalled in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
-[Refit](https://github.com/paulcbetts/refit), or possibly [RestEase](https://github.com/canton7/RestEase), to manage the REST API.
+[RestEase](https://github.com/canton7/RestEase) to manage the REST API.
 
 ## Logic Layer
 * `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
