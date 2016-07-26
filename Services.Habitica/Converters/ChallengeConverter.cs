@@ -27,7 +27,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-	/* TODO: Enable class once I vet the Challenge model classes
+    // TODO: Enable class once I vet the Challenge model classes
+    /*
    public class ChallengeConverter : CustomCreationConverter<Challenge>
    {
       public override Challenge Create(Type objectType)
