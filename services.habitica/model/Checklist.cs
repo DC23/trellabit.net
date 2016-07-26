@@ -22,7 +22,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class Checklist
 	{

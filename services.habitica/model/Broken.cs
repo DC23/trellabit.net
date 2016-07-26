@@ -23,7 +23,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum Broken

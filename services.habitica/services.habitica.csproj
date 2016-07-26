@@ -7,7 +7,7 @@
     <ProjectGuid>{2F924B72-3381-4939-B657-06A752715C57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>trellabit.data.habitica</RootNamespace>
+    <RootNamespace>Trellabit.Data.Habitica</RootNamespace>
     <AssemblyName>trellabit.data.habitica</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

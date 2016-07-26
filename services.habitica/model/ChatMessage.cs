@@ -21,10 +21,10 @@
 
 using System;
 using System.Collections.Generic;
-using trellabit.services.habitica.converters;
+using Trellabit.Services.Habitica.Converters;
 using Newtonsoft.Json;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class ChatMessage
 	{

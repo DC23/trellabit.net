@@ -19,7 +19,7 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public static class Difficulty
 	{

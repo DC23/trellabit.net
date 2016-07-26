@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.services
+namespace Trellabit.Services
 {
     /// <summary>
     /// Task difficulty levels.

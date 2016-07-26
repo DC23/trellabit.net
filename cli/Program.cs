@@ -3,9 +3,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using trellabit.core;
+using Trellabit.Core;
 
-namespace trellabit.cli
+namespace Trellabit.Cli
 {
     /// <summary>
     /// The entry point to trellabit.cli

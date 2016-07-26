@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Commandline UI for trellabit.net, a .Net integration between Trello and Habitica.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JugglinDan")]
-[assembly: AssemblyProduct("trellabit.cli")]
+[assembly: AssemblyProduct("Trellabit.Cli")]
 [assembly: AssemblyCopyright("Copyright © JugglinDan 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

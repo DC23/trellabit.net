@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Definition of operations and algorithms for trellabit.net, a .Net integration between Trello and Habitica.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JugglinDan")]
-[assembly: AssemblyProduct("trellabit.logic")]
+[assembly: AssemblyProduct("Trellabit.Logic")]
 [assembly: AssemblyCopyright("Copyright © JugglinDan 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace trellabit.services.interfaces
+namespace Trellabit.Services.Interfaces
 {
     /// <summary>
     /// A single checklist item.

@@ -7,7 +7,7 @@
     <ProjectGuid>{23D4C5E0-D925-4CEB-A575-CB8231DE521E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>trellabit.data.trello</RootNamespace>
+    <RootNamespace>Trellabit.Services.Trello</RootNamespace>
     <AssemblyName>trellabit.data.trello</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

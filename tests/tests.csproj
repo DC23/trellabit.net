@@ -8,7 +8,7 @@
     <ProjectGuid>{42E5B3D7-7B04-431B-8555-CCE2F59F7ABA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>trellabit.tests</RootNamespace>
+    <RootNamespace>Trellabit.Tests</RootNamespace>
     <AssemblyName>trellabit.tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

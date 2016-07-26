@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Unit testing assembly for trellabit.net, a .Net integration between Trello and Habitica.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JugglinDan")]
-[assembly: AssemblyProduct("trellabit.tests")]
+[assembly: AssemblyProduct("Trellabit.Tests")]
 [assembly: AssemblyCopyright("Copyright © JugglinDan 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

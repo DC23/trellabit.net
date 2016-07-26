@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.core;
+using Trellabit.Core;
 using System.IO;
 using System.Reflection;
 using Xunit;
 
-namespace trellabit.tests.core
+namespace Trellabit.Tests.core
 {
     public class TestUserOptions
     {

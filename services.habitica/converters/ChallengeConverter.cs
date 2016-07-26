@@ -20,12 +20,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using trellabit.services.habitica.model;
+using Trellabit.Services.Habitica.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace trellabit.services.habitica.converters
+namespace Trellabit.Services.Habitica.Converters
 {
    public class ChallengeConverter : CustomCreationConverter<Challenge>
    {
@@ -54,7 +54,7 @@ namespace trellabit.services.habitica.converters
 
             return target;
          }
-         catch (Exception e)
+         catch (Exception)
          {
             // Filter "challenge: null",  inside JSON
             return null;

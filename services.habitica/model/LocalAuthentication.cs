@@ -22,9 +22,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using trellabit.services.habitica.converters;
+using Trellabit.Services.Habitica.Converters;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class LocalAuthentication
 	{

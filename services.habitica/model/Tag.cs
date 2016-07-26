@@ -22,7 +22,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class Tag
 	{

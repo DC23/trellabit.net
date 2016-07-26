@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.services;
+using Trellabit.Services;
 
-namespace trellabit.services.interfaces
+namespace Trellabit.Services.Interfaces
 {
     /// <summary>
     /// A Trellabit task.

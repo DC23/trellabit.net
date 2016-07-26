@@ -7,7 +7,7 @@
     <ProjectGuid>{CE2CDBC4-3462-4C95-8371-F43A75F037AE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>trellabit.logic</RootNamespace>
+    <RootNamespace>Trellabit.Logic</RootNamespace>
     <AssemblyName>trellabit.logic</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

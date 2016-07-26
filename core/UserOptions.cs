@@ -5,7 +5,7 @@ using NLog;
 using System;
 using System.IO;
 
-namespace trellabit.core
+namespace Trellabit.Core
 {
     /// <summary>
     /// User-editable options for trellabit.

@@ -23,7 +23,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class Gear
 	{

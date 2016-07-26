@@ -23,7 +23,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class WebHook
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace trellabit.core
+namespace Trellabit.Core
 {
     /// <summary>
     /// Thrown when the password is incorrect for an encrypted Ini file.

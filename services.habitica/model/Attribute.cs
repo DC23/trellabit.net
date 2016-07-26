@@ -22,7 +22,7 @@
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public enum Attribute
 	{

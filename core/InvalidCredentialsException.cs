@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace trellabit.core
+namespace Trellabit.Core
 {
     /// <summary>
     /// Thrown when authentication credentials are invalid.

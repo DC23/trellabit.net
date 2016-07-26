@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.services.habitica;
+using Trellabit.Services.Habitica;
 using Xunit;
 
-namespace trellabit.tests.data.habitica
+namespace Trellabit.Tests.Services.Habitica
 {
     public class TestApi
     {

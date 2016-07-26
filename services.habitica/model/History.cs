@@ -21,9 +21,9 @@
 
 using System;
 using Newtonsoft.Json;
-using trellabit.services.habitica.converters;
+using Trellabit.Services.Habitica.Converters;
 
-namespace trellabit.services.habitica.model
+namespace Trellabit.Services.Habitica.Model
 {
 	public class History
 	{

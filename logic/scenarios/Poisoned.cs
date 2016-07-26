@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using trellabit.core;
+using Trellabit.Core;
 
-namespace trellabit.logic.scenarios
+namespace Trellabit.Logic.Scenarios
 {
     /// <summary>
     /// The Poisoning Scenario runner.
