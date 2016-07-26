@@ -19,7 +19,7 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-﻿using System;
+using System;
 using HabitRPG.Client.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
