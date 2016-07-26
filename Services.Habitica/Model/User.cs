@@ -25,9 +25,15 @@ using System;
 
 namespace Trellabit.Services.Habitica.Model
 {
-    // TODO: JSON user has a lot more fields that might be useful
+    // TODO: incomplete
 	public class User : Member
 	{
+		[JsonProperty("balance")]
+		public double Balance { get; set; }
+		
+		[JsonProperty("challenges")]
+		public List<Guid> Challenges { get; set; }
+
 //		[JsonProperty("dailys")]
 //		public List<Daily> Dailys { get; set; }
 
@@ -37,16 +43,10 @@ namespace Trellabit.Services.Habitica.Model
 //		[JsonProperty("rewards")]
 //		public List<Reward> Rewards { get; set; }
 
-//		[JsonProperty("todos")]
-//		public List<Todo> Todos { get; set; }
-
-		[JsonProperty("balance")]
-		public double Balance { get; set; }
-
 //		[JsonProperty("tags")]
 //		public List<Tag> Tags { get; set; }
-		
-		[JsonProperty("challenges")]
-		public List<Guid> Challenges { get; set; }
+
+//		[JsonProperty("todos")]
+//		public List<Todo> Todos { get; set; }
 	}
 }
