@@ -27,6 +27,7 @@ using Trellabit.Services.Habitica;
 
 namespace Trellabit.Services.Habitica.Converters
 {
+/* TODO: reenable once I vet the related model classes
    internal class TaskConverter : CustomCreationConverter<Model.ITask>
    {
       public override Model.ITask Create(Type objectType)
@@ -70,4 +71,5 @@ namespace Trellabit.Services.Habitica.Converters
          return target;
       }
    }
+*/
 }

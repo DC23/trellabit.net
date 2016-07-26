@@ -19,7 +19,7 @@ namespace Trellabit.Services.Habitica.Model
 		[JsonProperty("_id")]
 		public string Id { get; set; }
 
-        [JsonProperty("quest")]
-        public Quest Quest { get; set; }
+//        [JsonProperty("quest")]
+//        public Quest Quest { get; set; }
 	}
 }

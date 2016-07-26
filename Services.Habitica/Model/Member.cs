@@ -31,26 +31,26 @@ namespace Trellabit.Services.Habitica.Model
 		[JsonProperty("id")]
 		public Guid Id { get; set; }
 
-		[JsonProperty("items")]
-		public Items Items { get; set; }
+		//[JsonProperty("items")]
+		//public Items Items { get; set; }
 
-		[JsonProperty("profile")]
-		public Profile Profile { get; set; }
+		//[JsonProperty("profile")]
+		//public Profile Profile { get; set; }
 
 		[JsonProperty("stats")]
 		public Stats Stats { get; set; }
 
-		[JsonProperty("preferences")]
-		public Preferences Preferences { get; set; }
+		//[JsonProperty("preferences")]
+		//public Preferences Preferences { get; set; }
 
-		[JsonProperty("contributor")]
-		public Contributor Contributor { get; set; }
+		//[JsonProperty("contributor")]
+		//public Contributor Contributor { get; set; }
 
-		[JsonProperty("auth")]
-		public Authentication Authentication { get; set; }
+		//[JsonProperty("auth")]
+		//public Authentication Authentication { get; set; }
 
-		[JsonProperty("achievements")]
-		public Achievements Achievements { get; set; }
+		//[JsonProperty("achievements")]
+		//public Achievements Achievements { get; set; }
 
 		[JsonProperty("party")]
 		public Party Party { get; set; }
