@@ -25,6 +25,7 @@ using System;
 
 namespace Trellabit.Services.Habitica.Model
 {
+    // TODO: JSON user has a lot more fields that might be useful
 	public class User : Member
 	{
 		[JsonProperty("dailys")]

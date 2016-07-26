@@ -1,44 +1,9 @@
-# habitrpg-api-dotnet-client classes v3 updates
-I have not updated the following classes to v3:
+# habitrpg-api-dotnet-client classes
+The habitrpg-api-dotnet-client model classes are written for Habitica API v2.
+Although I expect a lot of the structure will be the same for v3, there are 
+significant changes. I have therefore placed the original files in the unvetted
+folder, and changed the namespace. As I check and update model classes I will
+move them back into the main Model namespace.
 
-    Achievements.cs
-    Attribute.cs
-    Authentication.cs
-    Broken.cs
-    Challenge.cs
-    ChatMessage.cs
-    Checklist.cs
-    Content.cs
-    ContentGear.cs
-    Contributor.cs
-    Daily.cs
-    Difficulty.cs
-    Direction.cs
-    Drop.cs
-    Egg.cs
-    Event.cs
-    Food.cs
-    Gear.cs
-    Group.cs
-    Habit.cs
-    Hair.cs
-    History.cs
-    Item.cs
-    Items.cs
-    LocalAuthentication.cs
-    Member.cs
-    Preferences.cs
-    Profile.cs
-    Quest.cs
-    RandomReward.cs
-    Repeat.cs
-    Reward.cs
-    ScoreResult.cs
-    ServerStatus.cs
-    Tag.cs
-    Task.cs
-    TimeAuthentication.cs
-    Todo.cs
-    User.cs
-    UserDefaults.cs
-    WebHook.cs
+Once done, I could probably use this work as the basis for bringing the
+habitrpg-api-dotnet-client project up to date with v3.

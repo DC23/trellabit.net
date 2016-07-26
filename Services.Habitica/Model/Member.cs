@@ -28,7 +28,7 @@ namespace Trellabit.Services.Habitica.Model
 {
 	public class Member
 	{
-		[JsonProperty("_id")]
+		[JsonProperty("id")]
 		public Guid Id { get; set; }
 
 		[JsonProperty("items")]
@@ -51,6 +51,9 @@ namespace Trellabit.Services.Habitica.Model
 
 		[JsonProperty("achievements")]
 		public Achievements Achievements { get; set; }
+
+		[JsonProperty("party")]
+		public Party Party { get; set; }
 
 	}
 }
