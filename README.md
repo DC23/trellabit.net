@@ -63,9 +63,16 @@ The key roles of the service implementations are:
 * map the data model to the specific third-party service
 * translate the service interface methods to the specific service API
 
-I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client) for the Habitica integration, 
-but development appears to have stalled in 2014 which means no support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
+I was planning to use [HabitRPG API .Net Client](https://github.com/marska/habitrpg-api-dotnet-client)
+for the Habitica integration, but development appears to have stalled in 2014 which means no
+support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
 [RestEase](https://github.com/canton7/RestEase) to manage the REST API.
+
+I am using the model classes from HabitRPG API .Net Client, all these classes
+have a file header indicating their origin and the Git commit ID where they
+appear in their original form. All modifications to the files since that commit,
+and all files in the Model directory without the header are derivative work
+carried out withing this project.
 
 ## Logic Layer
 * `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
