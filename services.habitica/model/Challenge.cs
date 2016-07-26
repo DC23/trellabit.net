@@ -1,4 +1,4 @@
------------------------------------------------------------
+//-----------------------------------------------------------
 // Original version of this file is from the habitrpg-api-dotnet-client project:
 // https://github.com/marska/habitrpg-api-dotnet-client
 // The original form of these files can be viewed in GitHub commit:

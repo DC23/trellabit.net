@@ -48,11 +48,60 @@
     <Reference Include="RestEase, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\RestEase.1.0.11\lib\net45\RestEase.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clients\HabiticaUserClient.cs" />
     <Compile Include="IGitHubApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="model\Achievements.cs" />
+    <Compile Include="model\Attribute.cs" />
+    <Compile Include="model\Authentication.cs" />
+    <Compile Include="model\Broken.cs" />
+    <Compile Include="model\Buffs.cs" />
+    <Compile Include="model\Challenge.cs" />
+    <Compile Include="model\ChatMessage.cs" />
+    <Compile Include="model\Checklist.cs" />
+    <Compile Include="model\Content.cs" />
+    <Compile Include="model\ContentGear.cs" />
+    <Compile Include="model\Contributor.cs" />
+    <Compile Include="model\Daily.cs" />
+    <Compile Include="model\Difficulty.cs" />
+    <Compile Include="model\Direction.cs" />
+    <Compile Include="model\Drop.cs" />
+    <Compile Include="model\Egg.cs" />
+    <Compile Include="model\Event.cs" />
+    <Compile Include="model\Food.cs" />
+    <Compile Include="model\Gear.cs" />
+    <Compile Include="model\Group.cs" />
+    <Compile Include="model\Habit.cs" />
+    <Compile Include="model\Hair.cs" />
+    <Compile Include="model\History.cs" />
+    <Compile Include="model\Item.cs" />
+    <Compile Include="model\Items.cs" />
+    <Compile Include="model\LocalAuthentication.cs" />
+    <Compile Include="model\Member.cs" />
+    <Compile Include="model\Preferences.cs" />
+    <Compile Include="model\Profile.cs" />
+    <Compile Include="model\Quest.cs" />
+    <Compile Include="model\RandomReward.cs" />
+    <Compile Include="model\Repeat.cs" />
+    <Compile Include="model\Reward.cs" />
+    <Compile Include="model\ScoreResult.cs" />
+    <Compile Include="model\ServerStatus.cs" />
+    <Compile Include="model\Stats.cs" />
+    <Compile Include="model\StatsBase.cs" />
+    <Compile Include="model\Tag.cs" />
+    <Compile Include="model\Task.cs" />
+    <Compile Include="model\TimeAuthentication.cs" />
+    <Compile Include="model\Todo.cs" />
+    <Compile Include="model\User.cs" />
+    <Compile Include="model\UserDefaults.cs" />
+    <Compile Include="model\WebHook.cs" />
+    <Compile Include="converters\ChallengeConverter.cs" />
+    <Compile Include="converters\GuidConverter.cs" />
+    <Compile Include="converters\TaskConverter.cs" />
+    <Compile Include="converters\TimestampConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\core.csproj">
