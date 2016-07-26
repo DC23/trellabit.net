@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for f in *.cs
+do
+    cat header.txt $f >> $f.tmp
+    mv $f.tmp $f
+done
