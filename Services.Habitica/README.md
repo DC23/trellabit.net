@@ -1,0 +1,44 @@
+# habitrpg-api-dotnet-client classes v3 updates
+I have not updated the following classes to v3:
+
+    Achievements.cs
+    Attribute.cs
+    Authentication.cs
+    Broken.cs
+    Challenge.cs
+    ChatMessage.cs
+    Checklist.cs
+    Content.cs
+    ContentGear.cs
+    Contributor.cs
+    Daily.cs
+    Difficulty.cs
+    Direction.cs
+    Drop.cs
+    Egg.cs
+    Event.cs
+    Food.cs
+    Gear.cs
+    Group.cs
+    Habit.cs
+    Hair.cs
+    History.cs
+    Item.cs
+    Items.cs
+    LocalAuthentication.cs
+    Member.cs
+    Preferences.cs
+    Profile.cs
+    Quest.cs
+    RandomReward.cs
+    Repeat.cs
+    Reward.cs
+    ScoreResult.cs
+    ServerStatus.cs
+    Tag.cs
+    Task.cs
+    TimeAuthentication.cs
+    Todo.cs
+    User.cs
+    UserDefaults.cs
+    WebHook.cs

@@ -32,19 +32,19 @@ namespace Trellabit.Services.Habitica.Model
 		public string Class { get; set; }
 
 		[JsonProperty("exp")]
-		public double Exp { get; set; }
+		public double Experience { get; set; }
 
 		[JsonProperty("gp")]
 		public double Gold { get; set; }
 
 		[JsonProperty("hp")]
-		public double HP { get; set; }
+		public double Health { get; set; }
 
 		[JsonProperty("lvl")]
-		public int Lvl { get; set; }
+		public int Level { get; set; }
 
 		[JsonProperty("mp")]
-		public double MP { get; set; }
+		public double Mana { get; set; }
 
 		[JsonProperty("training")]
 		public StatsBase Training { get; set; }
@@ -56,6 +56,9 @@ namespace Trellabit.Services.Habitica.Model
 		public int MaxHealth { get; set; }
 
 		[JsonProperty("maxMP")]
-		public int MaxMP { get; set; }
+		public int MaxMana { get; set; }
+
+		[JsonProperty("points")]
+		public int Points { get; set; }
 	}
 }

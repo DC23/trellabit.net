@@ -37,6 +37,7 @@ namespace Trellabit.Services.Habitica.Model
 		[JsonProperty("str")]
 		public double Str { get; set; }
 
+        /* TODO: Not convinced I need these. Leave for now just in case.
 		public static StatsBase operator+(StatsBase one, StatsBase two)
 		{
 			var result = new StatsBase();
@@ -116,5 +117,6 @@ namespace Trellabit.Services.Habitica.Model
 			result.Str = one.Str / val;
 			return result;
 		}
+        */
 	}
 }
