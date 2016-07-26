@@ -64,6 +64,8 @@
     <Compile Include="Converters\TaskConverter.cs" />
     <Compile Include="Converters\TimestampConverter.cs" />
     <Compile Include="Model\Party.cs" />
+    <Compile Include="Model\Progress.cs" />
+    <Compile Include="Model\Quest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\core.csproj">

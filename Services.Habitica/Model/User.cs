@@ -30,23 +30,20 @@ namespace Trellabit.Services.Habitica.Model
 	{
 		[JsonProperty("balance")]
 		public double Balance { get; set; }
-		
+
 		[JsonProperty("challenges")]
 		public List<Guid> Challenges { get; set; }
 
-//		[JsonProperty("dailys")]
-//		public List<Daily> Dailys { get; set; }
+        // TODO: Contributor
+        // TODO: History
 
-//		[JsonProperty("habits")]
-//		public List<Habit> Habits { get; set; }
+		[JsonProperty("lastCron")]
+		public DateTime LastCron { get; set; }
 
-//		[JsonProperty("rewards")]
-//		public List<Reward> Rewards { get; set; }
+		[JsonProperty("guilds")]
+		public List<Guid> Guilds { get; set; }
 
 //		[JsonProperty("tags")]
 //		public List<Tag> Tags { get; set; }
-
-//		[JsonProperty("todos")]
-//		public List<Todo> Todos { get; set; }
 	}
 }

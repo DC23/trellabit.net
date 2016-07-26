@@ -19,9 +19,9 @@ namespace Trellabit.Services.Habitica.Model
 		public int CollectedItems { get; set; }
 
 		[JsonProperty("down")]
-		public float Down { get; set; }
+		public double Down { get; set; }
 
 		[JsonProperty("up")]
-		public float Up { get; set; }
+		public double Up { get; set; }
 	}
 }
