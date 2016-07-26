@@ -23,24 +23,24 @@ using Newtonsoft.Json;
 
 namespace Trellabit.Services.Habitica.Model
 {
-	public class Buffs : StatsBase
-	{
-		[JsonProperty("seafoam")]
-		public bool Seafoam { get; set; }
+    public class Buffs : StatsBase
+    {
+        [JsonProperty("seafoam")]
+        public bool Seafoam { get; set; }
 
-		[JsonProperty("shinySeed")]
-		public bool ShinySeed { get; set; }
+        [JsonProperty("shinySeed")]
+        public bool ShinySeed { get; set; }
 
-		[JsonProperty("snowball")]
-		public bool Snowball { get; set; }
+        [JsonProperty("snowball")]
+        public bool Snowball { get; set; }
 
-		[JsonProperty("spookySparkles")]
-		public bool SpookySparkles { get; set; }
+        [JsonProperty("spookySparkles")]
+        public bool SpookySparkles { get; set; }
 
-		[JsonProperty("stealth")]
-		public int Stealth { get; set; }
+        [JsonProperty("stealth")]
+        public int Stealth { get; set; }
 
-		[JsonProperty("streaks")]
-		public bool Streaks { get; set; }
-	}
+        [JsonProperty("streaks")]
+        public bool Streaks { get; set; }
+    }
 }

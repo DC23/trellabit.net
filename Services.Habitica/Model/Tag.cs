@@ -24,15 +24,15 @@ using System;
 
 namespace Trellabit.Services.Habitica.Model
 {
-	public class Tag
-	{
-		[JsonProperty("id")]
-		public Guid Id { get; set; }
+    public class Tag
+    {
+        [JsonProperty("challenge")]
+        public bool Challenge { get; set; }
 
-		[JsonProperty("name")]
-		public string Name { get; set; }
+        [JsonProperty("id")]
+        public Guid Id { get; set; }
 
-		[JsonProperty("challenge")]
-		public string Challenge { get; set; }
-	}
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
 }

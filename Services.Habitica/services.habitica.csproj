@@ -66,6 +66,7 @@
     <Compile Include="Model\Party.cs" />
     <Compile Include="Model\Progress.cs" />
     <Compile Include="Model\Quest.cs" />
+    <Compile Include="Model\Tag.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\core.csproj">

@@ -23,42 +23,42 @@ using Newtonsoft.Json;
 
 namespace Trellabit.Services.Habitica.Model
 {
-	public class Stats : StatsBase
-	{
-		[JsonProperty("buffs")]
-		public Buffs Buffs { get; set; }
+    public class Stats : StatsBase
+    {
+        [JsonProperty("buffs")]
+        public Buffs Buffs { get; set; }
 
-		[JsonProperty("class")]
-		public string Class { get; set; }
+        [JsonProperty("class")]
+        public string Class { get; set; }
 
-		[JsonProperty("exp")]
-		public double Experience { get; set; }
+        [JsonProperty("exp")]
+        public double Experience { get; set; }
 
-		[JsonProperty("gp")]
-		public double Gold { get; set; }
+        [JsonProperty("gp")]
+        public double Gold { get; set; }
 
-		[JsonProperty("hp")]
-		public double Health { get; set; }
+        [JsonProperty("hp")]
+        public double Health { get; set; }
 
-		[JsonProperty("lvl")]
-		public int Level { get; set; }
+        [JsonProperty("lvl")]
+        public int Level { get; set; }
 
-		[JsonProperty("mp")]
-		public double Mana { get; set; }
+        [JsonProperty("mp")]
+        public double Mana { get; set; }
 
-		[JsonProperty("training")]
-		public StatsBase Training { get; set; }
+        [JsonProperty("training")]
+        public StatsBase Training { get; set; }
 
-		[JsonProperty("toNextLevel")]
-		public int ToNextLevel { get; set; }
+        [JsonProperty("toNextLevel")]
+        public int ToNextLevel { get; set; }
 
-		[JsonProperty("maxHealth")]
-		public int MaxHealth { get; set; }
+        [JsonProperty("maxHealth")]
+        public int MaxHealth { get; set; }
 
-		[JsonProperty("maxMP")]
-		public int MaxMana { get; set; }
+        [JsonProperty("maxMP")]
+        public int MaxMana { get; set; }
 
-		[JsonProperty("points")]
-		public int Points { get; set; }
-	}
+        [JsonProperty("points")]
+        public int Points { get; set; }
+    }
 }

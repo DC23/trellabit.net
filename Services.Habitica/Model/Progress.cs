@@ -9,19 +9,19 @@ namespace Trellabit.Services.Habitica.Model
     /// May require disambiguation.
     /// </summary>
     // TODO: incomplete
-	public class Progress
-	{
+    public class Progress
+    {
         // TODO: determine datatype
         [JsonProperty("collect")]
         public object Collect { get; set; }
 
-		[JsonProperty("collectedItems")]
-		public int CollectedItems { get; set; }
+        [JsonProperty("collectedItems")]
+        public int CollectedItems { get; set; }
 
-		[JsonProperty("down")]
-		public double Down { get; set; }
+        [JsonProperty("down")]
+        public double Down { get; set; }
 
-		[JsonProperty("up")]
-		public double Up { get; set; }
-	}
+        [JsonProperty("up")]
+        public double Up { get; set; }
+    }
 }

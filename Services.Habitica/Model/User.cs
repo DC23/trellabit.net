@@ -26,24 +26,24 @@ using System;
 namespace Trellabit.Services.Habitica.Model
 {
     // TODO: incomplete
-	public class User : Member
-	{
-		[JsonProperty("balance")]
-		public double Balance { get; set; }
+    public class User : Member
+    {
+        [JsonProperty("balance")]
+        public double Balance { get; set; }
 
-		[JsonProperty("challenges")]
-		public List<Guid> Challenges { get; set; }
+        [JsonProperty("challenges")]
+        public List<Guid> Challenges { get; set; }
 
         // TODO: Contributor
         // TODO: History
 
-		[JsonProperty("lastCron")]
-		public DateTime LastCron { get; set; }
+        [JsonProperty("lastCron")]
+        public DateTime LastCron { get; set; }
 
-		[JsonProperty("guilds")]
-		public List<Guid> Guilds { get; set; }
+        [JsonProperty("guilds")]
+        public List<Guid> Guilds { get; set; }
 
-//		[JsonProperty("tags")]
-//		public List<Tag> Tags { get; set; }
-	}
+        [JsonProperty("tags")]
+        public List<Tag> Tags { get; set; }
+    }
 }

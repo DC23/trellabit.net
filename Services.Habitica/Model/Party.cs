@@ -10,8 +10,8 @@ namespace Trellabit.Services.Habitica.Model
     /// disambiguate the classes when I get that far.
     /// </summary>
     // TODO: incomplete
-	public class Party
-	{
+    public class Party
+    {
         //[JsonProperty("order")]
         //public PartyOrder Order { get; set; }
 
@@ -20,5 +20,5 @@ namespace Trellabit.Services.Habitica.Model
 
         [JsonProperty("quest")]
         public Quest Quest { get; set; }
-	}
+    }
 }
