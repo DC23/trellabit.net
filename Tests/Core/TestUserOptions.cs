@@ -8,7 +8,7 @@ using System.IO;
 using System.Reflection;
 using Xunit;
 
-namespace Trellabit.Tests.core
+namespace Trellabit.Tests.Core
 {
     public class TestUserOptions
     {
