@@ -20,12 +20,12 @@
 //------------------------------------------------------------------------------
 
 using System;
-using HabitRPG.Client.Model;
+using trellabit.services.habitica.model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace HabitRPG.Client.Converters
+namespace trellabit.services.habitica.converters
 {
    public class ChallengeConverter : CustomCreationConverter<Challenge>
    {

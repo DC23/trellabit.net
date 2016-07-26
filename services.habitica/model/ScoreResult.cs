@@ -21,7 +21,7 @@
 
 using Newtonsoft.Json;
 
-namespace HabitRPG.Client.Model
+namespace trellabit.services.habitica.model
 {
 	public class ScoreResult : Stats
 	{
@@ -34,8 +34,9 @@ namespace HabitRPG.Client.Model
 		[JsonProperty("_tmp")]
 		public RandomReward RandomReward { get; set; }
 
-		[JsonProperty("buffs")]
-		public Buffs Buffs { get; set; }
+        // TODO: I shouldn't require this, as it masks an identical inherited property
+		//[JsonProperty("buffs")]
+		//public Buffs Buffs { get; set; }
 
 		[JsonProperty("points")]
 		public double Points { get; set; }

@@ -23,7 +23,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
 
-namespace HabitRPG.Client.Model
+namespace trellabit.services.habitica.model
 {
 	public class User : Member
 	{

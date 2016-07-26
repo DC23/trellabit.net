@@ -22,9 +22,9 @@
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using HabitRPG.Client.Converters;
+using trellabit.services.habitica.converters;
 
-namespace HabitRPG.Client.Model
+namespace trellabit.services.habitica.model
 {
 	public class Achievements
 	{

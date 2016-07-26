@@ -24,7 +24,7 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
-namespace HabitRPG.Client.Model
+namespace trellabit.services.habitica.model
 {
 	public interface ITask
 	{

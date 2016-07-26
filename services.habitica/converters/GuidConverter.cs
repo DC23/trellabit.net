@@ -22,7 +22,7 @@
 using Newtonsoft.Json;
 using System;
 
-namespace HabitRPG.Client.Converters
+namespace trellabit.services.habitica.converters
 {
 
 	public class GuidConverter : JsonConverter

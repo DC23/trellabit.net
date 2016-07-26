@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace HabitRPG.Client.Model
+namespace trellabit.services.habitica.model
 {
 	public class Todo : Task
 	{

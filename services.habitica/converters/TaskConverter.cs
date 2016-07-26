@@ -23,33 +23,34 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
+using trellabit.services.habitica;
 
-namespace HabitRPG.Client.Converters
+namespace trellabit.services.habitica.converters
 {
-   internal class TaskConverter : CustomCreationConverter<Model.ITask>
+   internal class TaskConverter : CustomCreationConverter<model.ITask>
    {
-      public override Model.ITask Create(Type objectType)
+      public override model.ITask Create(Type objectType)
       {
          throw new NotImplementedException();
       }
 
-      public Model.ITask Create(Type objectType, JObject jObject)
+      public model.ITask Create(Type objectType, JObject jObject)
       {
          var type = (string)jObject.Property("type");
 
          switch (type)
          {
             case "daily":
-               return new Model.Daily();
+               return new model.Daily();
 
             case "habit":
-               return new Model.Habit();
+               return new model.Habit();
 
             case "todo":
-               return new Model.Todo();
+               return new model.Todo();
 
             case "reward":
-               return new Model.Reward();
+               return new model.Reward();
          }
 
          throw new Exception(String.Format("Type: {0} not supported", type));
