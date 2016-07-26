@@ -4,9 +4,9 @@
 NUGET=./packages/NuGet.CommandLine.3.4.3/tools/NuGet.exe
 RUNNER=./packages/xunit.runner.console.2.1.0/tools/xunit.console.exe
 RUNNER_FLAGS=-verbose -nocolor
-DEBUG_ASSEMBLIES=./tests/bin/Debug/trellabit.tests.dll
-RELEASE_ASSEMBLIES=./tests/bin/Release/trellabit.tests.dll
-SOLUTION=trellabit.net.sln
+DEBUG_ASSEMBLIES=./Tests/bin/Debug/trellabit.tests.dll
+RELEASE_ASSEMBLIES=./Tests/bin/Release/trellabit.tests.dll
+SOLUTION=Trellabit.net.sln
 XBUILD_FLAGS=/verbosity:normal
 
 .PHONY: all

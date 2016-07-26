@@ -65,8 +65,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="core\TestUserOptions.cs" />
-    <Compile Include="services.habitica\TestApi.cs" />
+    <Compile Include="Core\TestUserOptions.cs" />
+    <Compile Include="Services.Habitica\TestApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,27 +84,27 @@
     <Folder Include="cli\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\core\core.csproj">
+    <ProjectReference Include="..\Core\core.csproj">
       <Project>{7486EB8A-8084-4B36-949B-9876517CAFD1}</Project>
       <Name>core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\logic\logic.csproj">
+    <ProjectReference Include="..\Logic\logic.csproj">
       <Project>{CE2CDBC4-3462-4C95-8371-F43A75F037AE}</Project>
       <Name>logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cli\cli.csproj">
+    <ProjectReference Include="..\Cli\cli.csproj">
       <Project>{32069475-EDCA-41F2-A0EB-EE530B522C44}</Project>
       <Name>cli</Name>
     </ProjectReference>
-    <ProjectReference Include="..\services\services.csproj">
+    <ProjectReference Include="..\Services\services.csproj">
       <Project>{801C9077-30F1-4E57-8126-877F5ECC6DE8}</Project>
       <Name>services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\services.habitica\services.habitica.csproj">
+    <ProjectReference Include="..\Services.Habitica\services.habitica.csproj">
       <Project>{2F924B72-3381-4939-B657-06A752715C57}</Project>
       <Name>services.habitica</Name>
     </ProjectReference>
-    <ProjectReference Include="..\services.trello\services.trello.csproj">
+    <ProjectReference Include="..\Services.Trello\services.trello.csproj">
       <Project>{23D4C5E0-D925-4CEB-A575-CB8231DE521E}</Project>
       <Name>services.trello</Name>
     </ProjectReference>
