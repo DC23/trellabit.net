@@ -19,7 +19,7 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

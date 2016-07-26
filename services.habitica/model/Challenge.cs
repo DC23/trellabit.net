@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------
+-----------------------------------------------------------
 // Original version of this file is from the habitrpg-api-dotnet-client project:
 // https://github.com/marska/habitrpg-api-dotnet-client
 // The original form of these files can be viewed in GitHub commit:
@@ -19,7 +19,7 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-﻿using System;
+using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

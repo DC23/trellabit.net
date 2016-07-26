@@ -19,7 +19,7 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-﻿namespace HabitRPG.Client.Model
+namespace HabitRPG.Client.Model
 {
 	public static class Difficulty
 	{
