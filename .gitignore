@@ -243,3 +243,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+
+# Python and Jupyter files
+*.pyc
+.ipynb_checkpoints/
