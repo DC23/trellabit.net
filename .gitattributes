@@ -4,6 +4,11 @@
 * text=auto
 
 ###############################################################################
+# Jupyter/IPython notebook output strip filter
+###############################################################################
+*.ipynb filter=nbstripout
+
+###############################################################################
 # Set default behavior for command prompt diff.
 #
 # This is need for earlier builds of msysgit that does not have it on by
