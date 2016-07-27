@@ -24,7 +24,7 @@ using System;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-    public class GuidConverter : JsonConverter
+    public class GuidJsonConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

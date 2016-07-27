@@ -16,13 +16,13 @@ namespace Trellabit.Tests.Services.Habitica.Converters
         [Fact]
         public void CanConvertString()
         {
-            Assert.True(new GuidConverter().CanConvert(typeof(string)));
+            Assert.True(new GuidJsonConverter().CanConvert(typeof(string)));
         }
 
         [Fact]
         public void CanConvertGuid()
         {
-            Assert.True(new GuidConverter().CanConvert(typeof(Guid)));
+            Assert.True(new GuidJsonConverter().CanConvert(typeof(Guid)));
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
             var stringWriter = new StringWriter();
             var writer = new JsonTextWriter(stringWriter);
             var serializer = new JsonSerializer();
-            var converter = new GuidConverter();
+            var converter = new GuidJsonConverter();
             var guid = Guid.NewGuid();
             string expected = guid.ToString();
 
@@ -50,7 +50,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
             var stringWriter = new StringWriter();
             var writer = new JsonTextWriter(stringWriter);
             var serializer = new JsonSerializer();
-            var converter = new GuidConverter();
+            var converter = new GuidJsonConverter();
             var guid = Guid.NewGuid();
             string expected = guid.ToString();
 
@@ -65,7 +65,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
         public void ReadJson()
         {
             // arrange
-            var converter = new GuidConverter();
+            var converter = new GuidJsonConverter();
             var expected = Guid.NewGuid();
             var serializer = new JsonSerializer();
             var reader = new Mock<JsonReader>();

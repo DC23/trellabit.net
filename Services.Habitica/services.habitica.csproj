@@ -60,9 +60,9 @@
     <Compile Include="Model\StatsBase.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Converters\ChallengeConverter.cs" />
-    <Compile Include="Converters\GuidConverter.cs" />
+    <Compile Include="Converters\GuidJsonConverter.cs" />
     <Compile Include="Converters\TaskConverter.cs" />
-    <Compile Include="Converters\TimestampConverter.cs" />
+    <Compile Include="Converters\TimestampJsonConverter.cs" />
     <Compile Include="Model\Party.cs" />
     <Compile Include="Model\Progress.cs" />
     <Compile Include="Model\Quest.cs" />
