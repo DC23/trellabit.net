@@ -20,7 +20,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
             Assert.True(new DateTimeJsonConverter().CanConvert(typeof(DateTime)));
         }
 
-        [Fact(Skip = "fails due to epoch time being written. This test expects a DateTime parseable string")]
+        [Fact]
         public void WriteJson()
         {
             // arrange
@@ -38,7 +38,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
         }
 
         [Fact]
-        public void ReadJsonUTC()
+        public void ReadJson()
         {
             var converter = new DateTimeJsonConverter();
             var serializer = new JsonSerializer();
