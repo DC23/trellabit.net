@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Moq;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,27 +26,57 @@ namespace Trellabit.Tests.Services.Habitica.Converters
         }
 
         [Fact]
-        public void StringToJson()
+        public void WriteStringToJson()
         {
-            Assert.True(false, "incomplete");
+            // arrange
+            var stringWriter = new StringWriter();
+            var writer = new JsonTextWriter(stringWriter);
+            var serializer = new JsonSerializer();
+            var converter = new GuidConverter();
+            var guid = Guid.NewGuid();
+            string expected = guid.ToString();
+
+            // act
+            converter.WriteJson(writer, expected, serializer);
+
+            // assert
+            Assert.Equal(expected, stringWriter.ToString());
         }
 
         [Fact]
-        public void GuidToJson()
+        public void WriteGuidToJson()
         {
-            Assert.True(false, "incomplete");
+            // arrange
+            var stringWriter = new StringWriter();
+            var writer = new JsonTextWriter(stringWriter);
+            var serializer = new JsonSerializer();
+            var converter = new GuidConverter();
+            var guid = Guid.NewGuid();
+            string expected = guid.ToString();
+
+            // act
+            converter.WriteJson(writer, guid, serializer);
+
+            // assert
+            Assert.Equal(expected, stringWriter.ToString());
         }
 
         [Fact]
-        public void JsonToString()
+        public void ReadJson()
         {
-            Assert.True(false, "incomplete");
-        }
+            // arrange
+            var converter = new GuidConverter();
+            var expected = Guid.NewGuid();
+            var serializer = new JsonSerializer();
+            var reader = new Mock<JsonReader>();
+            reader.Setup(foo => foo.Value.ToString()).Returns(expected.ToString());
 
-        [Fact]
-        public void JsonToGuid()
-        {
-            Assert.True(false, "incomplete");
+            // act
+            var actual = converter.ReadJson(reader.Object, typeof(string), null, serializer);
+
+            // assert
+            Assert.IsType<Guid>(actual);
+            Assert.Equal(expected, actual);
         }
     }
 }

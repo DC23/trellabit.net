@@ -33,6 +33,7 @@ namespace Trellabit.Services.Habitica.Converters
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
+            // TODO: Is the magic word 'system' still used as an ID for anything in the v3 API?
             if (value.Equals(Guid.Empty))
                 writer.WriteRawValue("system");
             else
@@ -41,6 +42,7 @@ namespace Trellabit.Services.Habitica.Converters
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            // TODO: Is the magic word 'system' still used as an ID for anything in the v3 API?
             if (reader.Value.ToString() == "system")
                 return Guid.Empty;
 
