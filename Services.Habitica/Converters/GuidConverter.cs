@@ -24,7 +24,6 @@ using System;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-
     public class GuidConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
@@ -32,25 +31,20 @@ namespace Trellabit.Services.Habitica.Converters
             return objectType == typeof(string) || objectType == typeof(Guid);
         }
 
-        public override void WriteJson (JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            if(value.Equals (Guid.Empty))
-            {
-                writer.WriteRawValue ("system");
-            }
+            if (value.Equals(Guid.Empty))
+                writer.WriteRawValue("system");
             else
-            {
-                writer.WriteRawValue (value.ToString ());
-            }
+                writer.WriteRawValue(value.ToString());
         }
 
-        public override object ReadJson (JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if(reader.Value.ToString () == "system")
-            {
+            if (reader.Value.ToString() == "system")
                 return Guid.Empty;
-            }
-            return new Guid (reader.Value.ToString ());
+
+            return new Guid(reader.Value.ToString());
         }
     }
 }
