@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Trellabit.Tests.Services.Habitica.Converters
 {
-    public class TestGuidConverter
+    public class TestGuidJsonConverter
     {
         [Fact]
         public void CanConvertString()
