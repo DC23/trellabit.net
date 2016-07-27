@@ -81,7 +81,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="cli\" />
+    <Folder Include="Cli\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\core.csproj">

@@ -3,6 +3,9 @@
 a command-line interface to useful batch operations (such as batch application
 of labels), and synchronisation between Trello and Habitica. 
 
+Otherwise known (by DC23) as *my over-engineered hobby project that doesn't 
+yet do anything that I couldn't do in a hundred lines of Python*.
+
 The initial focus is on the core framework and the Habitica interface. The
 driving story for this is the creation of a poisoner application. The idea is to
 implement a regular timer that takes tiny amounts off a player's health, like
@@ -55,9 +58,9 @@ I am using a somewhat traditional tiered architecture, with a data access layer,
 business logic layer, and UI layer.
 
 ## Services / Data Access Layer
-* `trellabit.services`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
-* `trellabit.services.trello`: The Trello-specific data service implementation.
-* `trellabit.services.habitica`: The Habitica-specific data service implementation.
+* `Trellabit.Services`: The abstract interfaces and data model classes that define the data objects and the services that manage them.
+* `Trellabit.Services.Trello`: The Trello-specific data service implementation.
+* `Trellabit.Services.Habitica`: The Habitica-specific data service implementation.
 
 The key roles of the service implementations are:
 * map the data model to the specific third-party service
@@ -68,31 +71,33 @@ for the Habitica integration, but development appears to have stalled in 2014 wh
 support for the v3 Habitica API. Instead I plan to develop my own Habitica v3 API using 
 [RestEase](https://github.com/canton7/RestEase) to manage the REST API.
 
-I am using the model classes from HabitRPG API .Net Client, all these classes
-have a file header indicating their origin and the Git commit ID where they
+I am using the model classes from HabitRPG API .Net Client. All these classes
+have a file header indicating their origin and the Git commit ID for this repository where they
 appear in their original form. All modifications to the files since that commit,
-and all files in the Model directory without the header are derivative work
-carried out withing this project.
+and all files in the Model directory without the header are the unique work
+carried out withing this project. Changes that I make to update the Model classes to the
+Habitica v3 API will be merged back to the HabitRPG API .Net Client code, which may assist in
+eventually updating it to the v3 API.
 
 ## Logic Layer
-* `trellabit.logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
+* `Trellabit.Logic`: The core routines that implement the available operations such as syncing cards from Trello to Habitica.
     * Operates on the trellabit.data interfaces to keep it insulated from backend details such as the 3rd party APIs.
 
 ## User Interface Layer
-* `trellabit.cli`: The command-line interface wrapper. Provides a CLI UI to trellabit.operations.
+* `Trellabit.Cli`: The command-line interface wrapper. Provides a CLI UI to trellabit.operations.
     * Configures logging
     * Provides scope for me to reuse the habitica assembly in other applications (such as my pomodoro app).
     * Provides scope to create a GUI interface if desired.
 
 ## Testing Assembly
-`trellabit.tests` contains all unit tests for the other modules. The
+`Trellabit.Tests` contains all unit tests for the other modules. The
 InternalsVisibleTo assembly attribute is used to give the test code access to
 internal types, thus avoiding the problem of relaxed information hiding purely
 for the benefit of testing. Tests currently use a standard setup of
 [NUnit 3](http://www.nunit.org/) and [Moq](https://github.com/moq/moq4).
 
 ## Utility Assembly
-* `trellabit.core`: Core/common utility classes shared by many other modules.
+* `Trellabit.Core`: Core/common utility classes shared by many other modules.
 This is not really a layer. It is a separate module that sits off to the side
 and provides a grab-bag of shared functionality. Not sure what yet but I always
 end up with stuff that needs a home.
@@ -105,7 +110,7 @@ adding new services at a later date. Of course, my initial interface design will
 focus on my current goal of Trello / Habitica connections. It remains to be seen
 how well other services may map to this feature set.
 
-For things like trellabit.data.interfaces.ITask.Difficulty, Habitica implements
+For things like Trellabit.Data.Interfaces.ITask.Difficulty, Habitica implements
 this directly, and Trello can implement it as hidden labels applied to cards
 (with a default for other cases).  Similar ideas should allow a sufficiently
 rich set of attributes on Trello cards for mapping to Habitica in a useful way.
