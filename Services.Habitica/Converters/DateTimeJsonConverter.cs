@@ -21,19 +21,18 @@
 
 using Newtonsoft.Json;
 using System;
+using System.Globalization;
 
 namespace Trellabit.Services.Habitica.Converters
 {
     public class DateTimeJsonConverter : JsonConverter
     {
-        private readonly DateTime _epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            // TODO: For v3, would it be better to write an ISO8601 string instead of epoch time?
-            var dateTime = ((DateTime)value).ToUniversalTime();
-            var intMilliseconds = (Int64)((dateTime - _epoch).TotalMilliseconds);
-            writer.WriteRawValue(intMilliseconds.ToString());
+            DateTime dtValue = DateTime.SpecifyKind(((DateTime)value).ToUniversalTime(), DateTimeKind.Utc);
+            writer.WriteRawValue(dtValue.ToString("o", CultureInfo.InvariantCulture));
         }
 
         // SO MANY different values inside a DateTime Property...
@@ -43,19 +42,19 @@ namespace Trellabit.Services.Habitica.Converters
                 return reader.Value;
 
             if (reader.Value == null)
-                return _epoch;
+                return epoch;
 
             long longValue;
 
             if (long.TryParse(reader.Value.ToString(), out longValue))
-                return _epoch.AddMilliseconds(longValue);
+                return epoch.AddMilliseconds(longValue);
 
             DateTime dateTime;
 
             if (DateTime.TryParse(reader.Value.ToString(), out dateTime))
                 return DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
 
-            return _epoch;
+            return epoch;
         }
 
         public override bool CanConvert(Type objectType)
