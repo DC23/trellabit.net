@@ -24,29 +24,18 @@ using Newtonsoft.Json;
 
 namespace Trellabit.Services.Habitica.Model
 {
-	public class Daily : Task
-	{
-		public override string Type
-		{
-			get { return "daily"; }
-		}
+    // TODO: incomplete
+    public class Habit : Task
+    {
+        public override string Type { get { return "habit"; } }
 
-		[JsonProperty("history")]
-		public List<History> History { get; set; }
+        //[JsonProperty("history")]
+        //public List<History> History { get; set; }
 
-		[JsonProperty("completed")]
-		public bool Completed { get; set; }
+        [JsonProperty("up")]
+        public bool Up { get; set; } = true;
 
-		[JsonProperty("repeat")]
-		public Repeat Repeat { get; set; }
-
-		[JsonProperty("collapseChecklist")]
-		public bool CollapseChecklist { get; set; }
-
-		[JsonProperty("checklist")]
-		public List<Checklist> Checklist { get; set; }
-
-		[JsonProperty("streak")]
-		public double Streak { get; set; }
-	}
+        [JsonProperty("down")]
+        public bool Down { get; set; } = true;
+    }
 }

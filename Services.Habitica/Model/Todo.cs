@@ -19,23 +19,38 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-using System.Runtime.Serialization;
+using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
-	public enum Attribute
+    // TODO: incomplete
+	public class Todo : Task
 	{
-		[EnumMember(Value = "str")]
-		Strength,
+		public override string Type { get { return "todo"; } }
 
-		[EnumMember(Value = "per")]
-		Perception,
+		[JsonProperty("completed")]
+		public bool Completed { get; set; }
 
-		[EnumMember(Value = "con")]
-		Constitution,
+        // TODO: Does not appear to be present in v3 To-Do
+		//[JsonProperty("archived")]
+		//public bool Archived { get; set; }
 
-		[EnumMember(Value = "int")]
-		Intelligence,
+        // TODO: Does not appear to be present in v3 To-Do
+		//[JsonConverter(typeof(IsoDateTimeConverter))]
+		//[JsonProperty("dateCompleted")]
+		//public DateTime? DateCompleted { get; set; }
+
+        // TODO: Does not appear to be present in v3 To-Do
+		//[JsonProperty("date")]
+		//public DateTime? Date { get; set; }
+
+		[JsonProperty("collapseChecklist")]
+		public bool CollapseChecklist { get; set; }
+
+		//[JsonProperty("checklist")]
+		//public List<Checklist> Checklist { get; set; }
 	}
 }

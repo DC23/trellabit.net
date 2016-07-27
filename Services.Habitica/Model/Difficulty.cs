@@ -21,8 +21,13 @@
 
 namespace Trellabit.Services.Habitica.Model
 {
+    // TODO: Map this to Services.Difficulty
+    // TODO: incomplete
+    // I think a difficulty converter could easily map the floating point Habitica values to the Services.Difficulty enum
 	public static class Difficulty
 	{
+        // TODO: value of Trivial difficulty?
+
 		public const float Easy = 1f;
 
 		public const float Medium = 1.5f;

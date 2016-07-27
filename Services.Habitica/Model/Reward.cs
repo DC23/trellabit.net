@@ -19,31 +19,11 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Newtonsoft.Json;
-
 namespace Trellabit.Services.Habitica.Model
 {
-	public class Habit : Task
-	{
-		public override string Type
-		{
-			get { return "habit"; }
-		}
-
-		public Habit()
-		{
-			Up = true;
-			Down = true;
-		}
-
-		[JsonProperty("history")]
-		public List<History> History { get; set; }
-
-		[JsonProperty("up")]
-		public bool Up { get; set; }
-
-		[JsonProperty("down")]
-		public bool Down { get; set; }
-	}
+    // TODO: incomplete
+    public class Reward : Task
+    {
+        public override string Type { get { return "reward"; } }
+    }
 }

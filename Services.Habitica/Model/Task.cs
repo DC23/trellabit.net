@@ -26,53 +26,56 @@ using System.Collections.Generic;
 
 namespace Trellabit.Services.Habitica.Model
 {
-	public interface ITask
-	{
-		string Id { get; }
+    // TODO: Can I reconcile this with Trellabit.Services.ITask? Replacing this with that would be best.
+    public interface ITask
+    {
+        string Id { get; }
 
-		string Type { get; }
+        string Type { get; }
 
-		string Text { get; set; }
-	}
+        string Text { get; set; }
+    }
 
-	public class Task : ITask
-	{
-		public Task()
-		{
-			Tags = new Dictionary<Guid, bool>();
-			Priority = Difficulty.Easy;
-		}
+    // TODO: incomplete
+    public class Task : ITask
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
-		[JsonProperty("id")]
-		public string Id { get; set; }
+        // TODO: why not use the Services.Habitica.DateTimeJsonConverter?
+        [JsonConverter(typeof(IsoDateTimeConverter))]
+        [JsonProperty("createdAt")]
+        public DateTime? CreateDate { get; set; }
 
-		[JsonConverter(typeof(IsoDateTimeConverter))]
-		[JsonProperty("dateCreated")]
-		public DateTime? DateCreated { get; set; }
+        // TODO: updatedAt
 
-		[JsonProperty("text")]
-		public string Text { get; set; }
+        // TODO: userId
 
-		[JsonProperty("notes")]
-		public string Notes { get; set; }
+        [JsonProperty("text")]
+        public string Text { get; set; }
 
-		[JsonProperty("tags")]
-		public Dictionary<Guid, bool> Tags { get; set; }
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
 
-		[JsonProperty("value")]
-		public double Value { get; set; }
+        [JsonProperty("tags")]
+        public Dictionary<Guid, bool> Tags { get; set; } = new Dictionary<Guid, bool>();
 
-		[JsonProperty("priority")]
-		public float Priority { get; set; }
+        [JsonProperty("value")]
+        public double Value { get; set; }
 
-		[JsonProperty("attribute")]
-		[JsonConverter(typeof(StringEnumConverter))]
-		public Attribute Attribute { get; set; }
+        [JsonProperty("priority")]
+        public float Priority { get; set; } = Difficulty.Easy;
 
-		[JsonProperty("challenge")]
-		public Challenge Challenge { get; set; }
+        [JsonProperty("attribute")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Attribute Attribute { get; set; }
 
-		[JsonProperty("type")]
-		public virtual string Type { get; private set; }
-	}
+        //[JsonProperty("challenge")]
+        //public Challenge Challenge { get; set; }
+
+        [JsonProperty("type")]
+        public virtual string Type { get; private set; }
+
+        // TODO: reminders
+    }
 }

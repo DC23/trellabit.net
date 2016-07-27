@@ -9,7 +9,7 @@ namespace Trellabit.Services
     /// <summary>
     /// Task difficulty levels.
     /// </summary>
-    enum Difficulty
+    public enum Difficulty
     {
         Trivial = 0,
         Easy,
