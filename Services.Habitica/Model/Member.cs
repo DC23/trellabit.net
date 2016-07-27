@@ -1,4 +1,3 @@
-//------------------------------------------------------------------------------
 // Original version of this file is from the habitrpg-api-dotnet-client project:
 // https://github.com/marska/habitrpg-api-dotnet-client
 // The original form of these files can be viewed in GitHub commit:
@@ -29,20 +28,20 @@ namespace Trellabit.Services.Habitica.Model
     // TODO: incomplete
     public class Member
     {
+        [JsonProperty("id")]
+        public Guid Id { get; set; }
+
         //[JsonProperty("achievements")]
         //public Achievements Achievements { get; set; }
 
         //[JsonProperty("auth")]
         //public Authentication Authentication { get; set; }
 
-        [JsonProperty("id")]
-        public Guid Id { get; set; }
-
         //[JsonProperty("items")]
         //public Items Items { get; set; }
 
-        [JsonProperty("stats")]
-        public Stats Stats { get; set; }
+        [JsonProperty("party")]
+        public Party Party { get; set; }
 
         //[JsonProperty("preferences")]
         //public Preferences Preferences { get; set; }
@@ -50,8 +49,7 @@ namespace Trellabit.Services.Habitica.Model
         //[JsonProperty("profile")]
         //public Profile Profile { get; set; }
 
-        [JsonProperty("party")]
-        public Party Party { get; set; }
-
+        [JsonProperty("stats")]
+        public Stats Stats { get; set; }
     }
 }

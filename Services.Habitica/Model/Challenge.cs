@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------
 // Original version of this file is from the habitrpg-api-dotnet-client project:
 // https://github.com/marska/habitrpg-api-dotnet-client
 // The original form of these files can be viewed in GitHub commit:
@@ -19,36 +19,31 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
     // TODO: incomplete
-    public class Daily : Task
-    {
-        public override string Type { get { return "daily"; } }
+	public class Challenge
+	{
+		[JsonProperty("id")]
+		public Guid Id { get; set; }
 
-        [JsonProperty("history")]
-        public List<History> History { get; set; }
+        [JsonProperty("taskId")]
+        public Guid TaskId { get; set; }
 
-        [JsonProperty("completed")]
-        public bool Completed { get; set; }
+		//[JsonProperty("broken")]
+		//[JsonConverter(typeof(StringEnumConverter))]
+		//public Broken Broken { get; set; }
 
-        [JsonProperty("repeat")]
-        public Repeat Repeat { get; set; }
+        // TODO: is this still in v3?
+		[JsonProperty("winner")]
+		public string Winner { get; set; }
 
-        [JsonProperty("collapseChecklist")]
-        public bool CollapseChecklist { get; set; }
-
-        [JsonProperty("checklist")]
-        public List<Checklist> Checklist { get; set; }
-
-        [JsonProperty("streak")]
-        public double Streak { get; set; }
-
-        // TODO: everyX int
-        // TODO: frequency
-        // TODO: startDate
-    }
+        // TODO: is this still in v3?
+        [JsonProperty("name")]
+	    public string Name { get; set; }
+	}
 }

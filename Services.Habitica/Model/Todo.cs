@@ -26,31 +26,17 @@ using Newtonsoft.Json.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
-    // TODO: incomplete
 	public class Todo : Task
 	{
 		public override string Type { get { return "todo"; } }
 
-		[JsonProperty("completed")]
-		public bool Completed { get; set; }
-
-        // TODO: Does not appear to be present in v3 To-Do
-		//[JsonProperty("archived")]
-		//public bool Archived { get; set; }
-
-        // TODO: Does not appear to be present in v3 To-Do
-		//[JsonConverter(typeof(IsoDateTimeConverter))]
-		//[JsonProperty("dateCompleted")]
-		//public DateTime? DateCompleted { get; set; }
-
-        // TODO: Does not appear to be present in v3 To-Do
-		//[JsonProperty("date")]
-		//public DateTime? Date { get; set; }
+        [JsonProperty("checklist")]
+        public List<Checklist> Checklist { get; set; }
 
 		[JsonProperty("collapseChecklist")]
 		public bool CollapseChecklist { get; set; }
 
-		//[JsonProperty("checklist")]
-		//public List<Checklist> Checklist { get; set; }
-	}
+		[JsonProperty("completed")]
+		public bool Completed { get; set; }
+    }
 }

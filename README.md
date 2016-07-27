@@ -93,8 +93,7 @@ eventually updating it to the v3 API.
 `Trellabit.Tests` contains all unit tests for the other modules. The
 InternalsVisibleTo assembly attribute is used to give the test code access to
 internal types, thus avoiding the problem of relaxed information hiding purely
-for the benefit of testing. Tests currently use a standard setup of
-[NUnit 3](http://www.nunit.org/) and [Moq](https://github.com/moq/moq4).
+for the benefit of testing. 
 
 ## Utility Assembly
 * `Trellabit.Core`: Core/common utility classes shared by many other modules.

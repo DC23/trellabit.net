@@ -24,13 +24,12 @@ using Newtonsoft.Json;
 
 namespace Trellabit.Services.Habitica.Model
 {
-    // TODO: incomplete
     public class Habit : Task
     {
         public override string Type { get { return "habit"; } }
 
-        //[JsonProperty("history")]
-        //public List<History> History { get; set; }
+        [JsonProperty("history")]
+        public List<History> History { get; set; }
 
         [JsonProperty("up")]
         public bool Up { get; set; } = true;

@@ -22,6 +22,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
+using Newtonsoft.Json.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
@@ -35,9 +36,13 @@ namespace Trellabit.Services.Habitica.Model
         public List<Guid> Challenges { get; set; }
 
         // TODO: Contributor
-        // TODO: History
+
+        // TODO: Can I map this to separate properties without too much effort?
+        //[JsonProperty("history")]
+        //public Dictionary<string, History> History { get; set; } = new Dictionary<string, History>();
 
         [JsonProperty("lastCron")]
+        [JsonConverter(typeof(IsoDateTimeConverter))]
         public DateTime LastCron { get; set; }
 
         [JsonProperty("guilds")]

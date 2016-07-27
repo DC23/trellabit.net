@@ -19,36 +19,33 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Trellabit.Services.Habitica.Model
 {
-    // TODO: incomplete
-    public class Daily : Task
+    public class Repeat
     {
-        public override string Type { get { return "daily"; } }
+        [JsonProperty("m")]
+        public bool Monday { get; set; } = true;
 
-        [JsonProperty("history")]
-        public List<History> History { get; set; }
+        [JsonProperty("t")]
+        public bool Tuesday { get; set; } = true;
 
-        [JsonProperty("completed")]
-        public bool Completed { get; set; }
+        [JsonProperty("w")]
+        public bool Wednesday { get; set; } = true;
 
-        [JsonProperty("repeat")]
-        public Repeat Repeat { get; set; }
+        [JsonProperty("th")]
+        public bool Thursday { get; set; } = true;
 
-        [JsonProperty("collapseChecklist")]
-        public bool CollapseChecklist { get; set; }
+        [JsonProperty("f")]
+        public bool Friday { get; set; } = true;
 
-        [JsonProperty("checklist")]
-        public List<Checklist> Checklist { get; set; }
+        [JsonProperty("s")]
+        public bool Saturday { get; set; } = true;
 
-        [JsonProperty("streak")]
-        public double Streak { get; set; }
-
-        // TODO: everyX int
-        // TODO: frequency
-        // TODO: startDate
+        [JsonProperty("su")]
+        public bool Sunday { get; set; } = true;
     }
 }
+
+

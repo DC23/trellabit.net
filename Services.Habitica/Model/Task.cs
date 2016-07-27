@@ -39,17 +39,25 @@ namespace Trellabit.Services.Habitica.Model
     // TODO: incomplete
     public class Task : ITask
     {
+        string ITask.Id { get { return Id.ToString(); } }
+
         [JsonProperty("id")]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
-        // TODO: why not use the Services.Habitica.DateTimeJsonConverter?
-        [JsonConverter(typeof(IsoDateTimeConverter))]
+        [JsonProperty("attribute")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Attribute Attribute { get; set; }
+
         [JsonProperty("createdAt")]
-        public DateTime? CreateDate { get; set; }
+        [JsonConverter(typeof(IsoDateTimeConverter))]
+        public DateTime CreatedAt { get; set; }
 
-        // TODO: updatedAt
+        [JsonProperty("updatedAt")]
+        [JsonConverter(typeof(IsoDateTimeConverter))]
+        public DateTime UpdatedAt { get; set; }
 
-        // TODO: userId
+        [JsonProperty("userId")]
+        public Guid UserId { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -66,12 +74,8 @@ namespace Trellabit.Services.Habitica.Model
         [JsonProperty("priority")]
         public float Priority { get; set; } = Difficulty.Easy;
 
-        [JsonProperty("attribute")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public Attribute Attribute { get; set; }
-
-        //[JsonProperty("challenge")]
-        //public Challenge Challenge { get; set; }
+        [JsonProperty("challenge")]
+        public Challenge Challenge { get; set; }
 
         [JsonProperty("type")]
         public virtual string Type { get; private set; }
