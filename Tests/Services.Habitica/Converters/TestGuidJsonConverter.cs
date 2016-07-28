@@ -28,54 +28,25 @@ namespace Trellabit.Tests.Services.Habitica.Converters
         [Fact]
         public void WriteStringToJson()
         {
-            // arrange
-            var stringWriter = new StringWriter();
-            var writer = new JsonTextWriter(stringWriter);
-            var serializer = new JsonSerializer();
-            var converter = new GuidJsonConverter();
             var guid = Guid.NewGuid();
-            string expected = guid.ToString();
-
-            // act
-            converter.WriteJson(writer, expected, serializer);
-
-            // assert
-            Assert.Equal(expected, stringWriter.ToString());
+            string actual = JsonConvert.SerializeObject(guid.ToString(), new GuidJsonConverter());
+            Assert.Equal(guid.ToString(), actual);
         }
 
         [Fact]
         public void WriteGuidToJson()
         {
-            // arrange
-            var stringWriter = new StringWriter();
-            var writer = new JsonTextWriter(stringWriter);
-            var serializer = new JsonSerializer();
-            var converter = new GuidJsonConverter();
             var guid = Guid.NewGuid();
-            string expected = guid.ToString();
-
-            // act
-            converter.WriteJson(writer, guid, serializer);
-
-            // assert
-            Assert.Equal(expected, stringWriter.ToString());
+            string actual = JsonConvert.SerializeObject(guid, new GuidJsonConverter());
+            Assert.Equal(guid.ToString(), actual);
         }
 
         [Fact]
         public void ReadJson()
         {
-            // arrange
-            var converter = new GuidJsonConverter();
             var expected = Guid.NewGuid();
-            var serializer = new JsonSerializer();
-            var reader = new Mock<JsonReader>();
-            reader.Setup(foo => foo.Value.ToString()).Returns(expected.ToString());
-
-            // act
-            var actual = converter.ReadJson(reader.Object, typeof(string), null, serializer);
-
-            // assert
-            Assert.IsType<Guid>(actual);
+            string s = $"'{expected.ToString()}'";
+            Guid actual = JsonConvert.DeserializeObject<Guid>(s, new GuidJsonConverter());
             Assert.Equal(expected, actual);
         }
     }
