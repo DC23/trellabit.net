@@ -21,7 +21,6 @@
 
 namespace Trellabit.Services.Habitica.Model
 {
-    // TODO: incomplete
     public class Reward : Task
     {
         public override string Type { get { return "reward"; } }

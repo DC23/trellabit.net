@@ -27,7 +27,7 @@ using Trellabit.Services.Habitica.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
-    public class Task 
+    public abstract class Task 
     {
         [JsonProperty("id")]
         public Guid Id { get; set; }

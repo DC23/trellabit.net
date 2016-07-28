@@ -45,7 +45,7 @@ namespace Trellabit.Services.Habitica.Model
         public List<Checklist> Checklist { get; set; }
 
         [JsonProperty("streak")]
-        public double Streak { get; set; }
+        public long Streak { get; set; }
 
         // TODO: everyX int
         // TODO: frequency

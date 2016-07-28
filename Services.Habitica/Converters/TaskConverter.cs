@@ -19,22 +19,31 @@
 // of the Apache V2 license.
 //------------------------------------------------------------------------------
 
+using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
-using System;
+using Trellabit.Data.Habitica.Converters;
 using Trellabit.Services.Habitica.Model;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-    public class TaskConverter : CustomCreationConverter<Task>
+    /// <summary>
+    /// Task factory/creator.
+    /// </summary>
+    /// <seealso cref="Trellabit.Data.Habitica.Converters.JsonCreationConverter{Trellabit.Services.Habitica.Model.Task}" />
+    public class TaskConverter : JsonCreationConverter<Task>
     {
-        public override Task Create(Type objectType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Create(Type objectType, JObject jObject)
+        /// <summary>
+        /// Create an instance of objectType, based properties in the JSON object
+        /// </summary>
+        /// <param name="objectType">type of object expected</param>
+        /// <param name="jObject">contents of JSON object that will be deserialized</param>
+        /// <returns>
+        /// The new instance.
+        /// </returns>
+        /// <exception cref="System.Exception"></exception>
+        protected override Task Create(Type objectType, JObject jObject)
         {
             var type = (string)jObject.Property("type");
 
@@ -54,20 +63,6 @@ namespace Trellabit.Services.Habitica.Converters
             }
 
             throw new Exception(String.Format("Type: {0} not supported", type));
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            // Load JObject from stream
-            JObject jObject = JObject.Load(reader);
-
-            // Create target object based on JObject
-            var target = Create(objectType, jObject);
-
-            // Populate the object properties
-            serializer.Populate(jObject.CreateReader(), target);
-
-            return target;
         }
     }
 }

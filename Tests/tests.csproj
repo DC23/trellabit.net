@@ -73,6 +73,7 @@
     <Compile Include="Services.Habitica\Converters\TestDateTimeJsonConverter.cs" />
     <Compile Include="Services.Habitica\Converters\TestDifficultyJsonConverter.cs" />
     <Compile Include="Services.Habitica\Converters\TestGuidJsonConverter.cs" />
+    <Compile Include="Services.Habitica\Converters\TestTaskConverter.cs" />
     <Compile Include="Services.Habitica\TestApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

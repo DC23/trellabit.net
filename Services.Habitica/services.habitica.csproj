@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Clients\HabiticaUserClient.cs" />
     <Compile Include="Converters\DifficultyJsonConverter.cs" />
+    <Compile Include="Converters\JsonCreationConverter.cs" />
     <Compile Include="IGitHubApi.cs" />
     <Compile Include="Model\Attribute.cs" />
     <Compile Include="Model\Challenge.cs" />

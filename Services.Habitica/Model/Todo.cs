@@ -33,10 +33,10 @@ namespace Trellabit.Services.Habitica.Model
         [JsonProperty("checklist")]
         public List<Checklist> Checklist { get; set; }
 
-		[JsonProperty("collapseChecklist")]
-		public bool CollapseChecklist { get; set; }
+        [JsonProperty("collapseChecklist")]
+        public bool CollapseChecklist { get; set; } = false;
 
-		[JsonProperty("completed")]
-		public bool Completed { get; set; }
+        [JsonProperty("completed")]
+        public bool Completed { get; set; } = false;
     }
 }
