@@ -28,7 +28,7 @@ namespace Trellabit.Services.Habitica.Model
 	public class History
 	{
 		[JsonProperty("date")]
-		[JsonConverter(typeof(DateTimeJsonConverter))]
+		[JsonConverter(typeof(EpochDateTimeJsonConverter))]
 		public DateTime Date { get; set; }
 
 		[JsonProperty("value")]

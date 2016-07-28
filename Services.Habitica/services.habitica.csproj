@@ -75,7 +75,7 @@
     <Compile Include="Converters\ChallengeConverter.cs" />
     <Compile Include="Converters\GuidJsonConverter.cs" />
     <Compile Include="Converters\TaskConverter.cs" />
-    <Compile Include="Converters\DateTimeJsonConverter.cs" />
+    <Compile Include="Converters\EpochDateTimeJsonConverter.cs" />
     <Compile Include="Model\Party.cs" />
     <Compile Include="Model\Progress.cs" />
     <Compile Include="Model\Quest.cs" />

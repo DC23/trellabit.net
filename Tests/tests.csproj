@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\TestUserOptions.cs" />
-    <Compile Include="Services.Habitica\Converters\TestDateTimeJsonConverter.cs" />
+    <Compile Include="Services.Habitica\Converters\TestEpochDateTimeJsonConverter.cs" />
     <Compile Include="Services.Habitica\Converters\TestDifficultyJsonConverter.cs" />
     <Compile Include="Services.Habitica\Converters\TestGuidJsonConverter.cs" />
     <Compile Include="Services.Habitica\Converters\TestTaskConverter.cs" />

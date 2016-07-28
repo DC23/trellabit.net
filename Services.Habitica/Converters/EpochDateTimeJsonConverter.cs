@@ -25,14 +25,29 @@ using System.Globalization;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-    public class DateTimeJsonConverter : JsonConverter
+    /// <summary>
+    /// Every JSON field in Habitica API v3 data appears to be in ISO8601 format, which is
+    /// handled nicely by the JSON.Net class IsoDateTimeConverter.
+    /// However, task history data is returned in the Linux Epoch format, and for that we 
+    /// need a custom converter.
+    /// Other history data is still returned in ISO format, so this class reads both.
+    /// </summary>
+    /// <seealso cref="Newtonsoft.Json.JsonConverter" />
+    /// <seealso cref="Newtonsoft.Json.Converters.IsoDateTimeConverter" />
+    public class EpochDateTimeJsonConverter : JsonConverter
     {
-        private readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        internal static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(DateTime);
+        }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            DateTime dtValue = DateTime.SpecifyKind(((DateTime)value).ToUniversalTime(), DateTimeKind.Utc);
-            writer.WriteRawValue(dtValue.ToString("o", CultureInfo.InvariantCulture));
+            var dateTime = ((DateTime)value).ToUniversalTime();
+            var intMilliseconds = (Int64)((dateTime - Epoch).TotalMilliseconds);
+            writer.WriteRawValue(intMilliseconds.ToString());
         }
 
         // SO MANY different values inside a DateTime Property...
@@ -42,24 +57,19 @@ namespace Trellabit.Services.Habitica.Converters
                 return reader.Value;
 
             if (reader.Value == null)
-                return epoch;
+                return Epoch;
 
             long longValue;
 
             if (long.TryParse(reader.Value.ToString(), out longValue))
-                return epoch.AddMilliseconds(longValue);
+                return Epoch.AddMilliseconds(longValue);
 
             DateTime dateTime;
 
             if (DateTime.TryParse(reader.Value.ToString(), out dateTime))
                 return DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
 
-            return epoch;
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return objectType == typeof(DateTime);
+            return Epoch;
         }
     }
 }
