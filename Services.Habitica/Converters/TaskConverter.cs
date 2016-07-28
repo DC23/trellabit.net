@@ -27,14 +27,14 @@ using Trellabit.Services.Habitica;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-    internal class TaskConverter : CustomCreationConverter<Model.ITask>
+    public class TaskConverter : CustomCreationConverter<Model.IHabiticaTask>
     {
-        public override Model.ITask Create(Type objectType)
+        public override Model.IHabiticaTask Create(Type objectType)
         {
             throw new NotImplementedException();
         }
 
-        public Model.ITask Create(Type objectType, JObject jObject)
+        public Model.IHabiticaTask Create(Type objectType, JObject jObject)
         {
             var type = (string)jObject.Property("type");
 

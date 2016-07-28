@@ -27,21 +27,13 @@ using Trellabit.Services.Habitica.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
-    // TODO: Can I reconcile this with Trellabit.Services.ITask? Replacing this with that would be best.
-    public interface ITask
+    public interface IHabiticaTask
     {
-        string Id { get; }
-
         string Type { get; }
-
-        string Text { get; set; }
     }
 
-    // TODO: incomplete
-    public class Task : ITask
+    public class Task : IHabiticaTask
     {
-        string ITask.Id { get { return Id.ToString(); } }
-
         [JsonProperty("id")]
         public Guid Id { get; set; }
 
