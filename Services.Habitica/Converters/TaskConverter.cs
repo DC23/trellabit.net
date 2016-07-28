@@ -23,34 +23,34 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
-using Trellabit.Services.Habitica;
+using Trellabit.Services.Habitica.Model;
 
 namespace Trellabit.Services.Habitica.Converters
 {
-    public class TaskConverter : CustomCreationConverter<Model.IHabiticaTask>
+    public class TaskConverter : CustomCreationConverter<Task>
     {
-        public override Model.IHabiticaTask Create(Type objectType)
+        public override Task Create(Type objectType)
         {
             throw new NotImplementedException();
         }
 
-        public Model.IHabiticaTask Create(Type objectType, JObject jObject)
+        public Task Create(Type objectType, JObject jObject)
         {
             var type = (string)jObject.Property("type");
 
             switch (type)
             {
                 case "daily":
-                    return new Model.Daily();
+                    return new Daily();
 
                 case "habit":
-                    return new Model.Habit();
+                    return new Habit();
 
                 case "todo":
-                    return new Model.Todo();
+                    return new Todo();
 
                 case "reward":
-                    return new Model.Reward();
+                    return new Reward();
             }
 
             throw new Exception(String.Format("Type: {0} not supported", type));
