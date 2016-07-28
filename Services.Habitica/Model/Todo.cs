@@ -30,6 +30,9 @@ namespace Trellabit.Services.Habitica.Model
 	{
 		public override string Type { get { return "todo"; } }
 
+        [JsonProperty("alias")]
+        public string Alias { get; set; }
+
         [JsonProperty("checklist")]
         public List<Checklist> Checklist { get; set; }
 

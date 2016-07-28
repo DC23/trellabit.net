@@ -28,6 +28,9 @@ namespace Trellabit.Services.Habitica.Model
     {
         public override string Type { get { return "habit"; } }
 
+        [JsonProperty("alias")]
+        public string Alias { get; set; }
+
         [JsonProperty("history")]
         public List<History> History { get; set; }
 
