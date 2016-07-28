@@ -4,6 +4,7 @@ using Xunit;
 using Trellabit.Services.Habitica.Model;
 using Moq;
 using System;
+using Trellabit.Services;
 
 namespace Trellabit.Tests.Services.Habitica.Converters
 {
@@ -21,6 +22,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
                 'type': '{type}',
                 'up': 'false',
                 'down': 'true',
+                'priority': '1.5',
             }}";
 
             var task = JsonConvert.DeserializeObject<Habit>(json, new TaskConverter());
@@ -30,6 +32,7 @@ namespace Trellabit.Tests.Services.Habitica.Converters
             Assert.Equal(guid, task.Id.ToString());
             Assert.Equal(type, task.Type);
             Assert.False(task.Up);
+            Assert.Equal(Difficulty.Medium, task.Difficulty);
         }
 
         [Fact]

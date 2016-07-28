@@ -64,76 +64,38 @@ namespace Trellabit.Tests.Services.Habitica.Converters
             Assert.Equal(DifficultyJsonConverter.DifficultyValues[expected], stringWriter.ToString());
         }
 
+        private void FromJson(Difficulty expected)
+        {
+            string expectedValue = DifficultyJsonConverter.DifficultyValues[expected];
+            string json = $"'{expectedValue}'";
+
+            var actual = JsonConvert.DeserializeObject<Difficulty>(json, new DifficultyJsonConverter());
+
+            Assert.Equal(expected, actual);
+        }
+
         [Fact]
         public void ReadJsonTrivial()
         {
-            var expected = Difficulty.Trivial;
-            var converter = new DifficultyJsonConverter();
-            var reader = new Mock<JsonReader>();
-            reader.Setup(foo => foo.Value.ToString()).Returns(
-                DifficultyJsonConverter.DifficultyValues[expected]);
-
-            Difficulty actual = (Difficulty)converter.ReadJson(
-                reader.Object,
-                typeof(Difficulty),
-                null,
-                new JsonSerializer());
-
-            Assert.Equal(expected, actual);
+            FromJson(Difficulty.Trivial);
         }
 
         [Fact]
         public void ReadJsonEasy()
         {
-            var expected = Difficulty.Easy;
-            var converter = new DifficultyJsonConverter();
-            var reader = new Mock<JsonReader>();
-            reader.Setup(foo => foo.Value.ToString()).Returns(
-                DifficultyJsonConverter.DifficultyValues[expected]);
-
-            Difficulty actual = (Difficulty)converter.ReadJson(
-                reader.Object,
-                typeof(Difficulty),
-                null,
-                new JsonSerializer());
-
-            Assert.Equal(expected, actual);
+            FromJson(Difficulty.Easy);
         }
 
         [Fact]
         public void ReadJsonMedium()
         {
-            var expected = Difficulty.Medium;
-            var converter = new DifficultyJsonConverter();
-            var reader = new Mock<JsonReader>();
-            reader.Setup(foo => foo.Value.ToString()).Returns(
-                DifficultyJsonConverter.DifficultyValues[expected]);
-
-            Difficulty actual = (Difficulty)converter.ReadJson(
-                reader.Object,
-                typeof(Difficulty),
-                null,
-                new JsonSerializer());
-
-            Assert.Equal(expected, actual);
+            FromJson(Difficulty.Medium);
         }
 
         [Fact]
         public void ReadJsonHard()
         {
-            var expected = Difficulty.Hard;
-            var converter = new DifficultyJsonConverter();
-            var reader = new Mock<JsonReader>();
-            reader.Setup(foo => foo.Value.ToString()).Returns(
-                DifficultyJsonConverter.DifficultyValues[expected]);
-
-            Difficulty actual = (Difficulty)converter.ReadJson(
-                reader.Object,
-                typeof(Difficulty),
-                null,
-                new JsonSerializer());
-
-            Assert.Equal(expected, actual);
+            FromJson(Difficulty.Hard);
         }
     }
 }
