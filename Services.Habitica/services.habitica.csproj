@@ -52,12 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clients\HabiticaUserClient.cs" />
+    <Compile Include="Converters\DifficultyJsonConverter.cs" />
     <Compile Include="IGitHubApi.cs" />
     <Compile Include="Model\Attribute.cs" />
     <Compile Include="Model\Challenge.cs" />
     <Compile Include="Model\Checklist.cs" />
     <Compile Include="Model\Daily.cs" />
-    <Compile Include="Model\Difficulty.cs" />
     <Compile Include="Model\Habit.cs" />
     <Compile Include="Model\History.cs" />
     <Compile Include="Model\Repeat.cs" />

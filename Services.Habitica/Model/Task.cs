@@ -23,6 +23,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using Trellabit.Services.Habitica.Converters;
 
 namespace Trellabit.Services.Habitica.Model
 {
@@ -72,7 +73,8 @@ namespace Trellabit.Services.Habitica.Model
         public double Value { get; set; }
 
         [JsonProperty("priority")]
-        public float Priority { get; set; } = Difficulty.Easy;
+        [JsonConverter(typeof(DifficultyJsonConverter))]
+        public Difficulty Difficulty { get; set; } = Difficulty.Easy;
 
         [JsonProperty("challenge")]
         public Challenge Challenge { get; set; }
