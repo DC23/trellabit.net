@@ -16,62 +16,42 @@ namespace Trellabit.Tests.Services.Habitica.Converters
             Assert.True(new DifficultyJsonConverter().CanConvert(typeof(Difficulty)));
         }
 
-        [Fact]
-        public void WriteJsonTrivial()
+        private void ToJson(Difficulty expected)
         {
-            var stringWriter = new StringWriter();
-            var converter = new DifficultyJsonConverter();
-            var expected = Difficulty.Trivial;
-
-            converter.WriteJson(new JsonTextWriter(stringWriter), expected, new JsonSerializer());
-
-            Assert.Equal(DifficultyJsonConverter.DifficultyValues[expected], stringWriter.ToString());
-        }
-
-        [Fact]
-        public void WriteJsonEasy()
-        {
-            var stringWriter = new StringWriter();
-            var converter = new DifficultyJsonConverter();
-            var expected = Difficulty.Easy;
-
-            converter.WriteJson(new JsonTextWriter(stringWriter), expected, new JsonSerializer());
-
-            Assert.Equal(DifficultyJsonConverter.DifficultyValues[expected], stringWriter.ToString());
-        }
-
-        [Fact]
-        public void WriteJsonMedium()
-        {
-            var stringWriter = new StringWriter();
-            var converter = new DifficultyJsonConverter();
-            var expected = Difficulty.Medium;
-
-            converter.WriteJson(new JsonTextWriter(stringWriter), expected, new JsonSerializer());
-
-            Assert.Equal(DifficultyJsonConverter.DifficultyValues[expected], stringWriter.ToString());
-        }
-
-        [Fact]
-        public void WriteJsonHard()
-        {
-            var stringWriter = new StringWriter();
-            var converter = new DifficultyJsonConverter();
-            var expected = Difficulty.Hard;
-
-            converter.WriteJson(new JsonTextWriter(stringWriter), expected, new JsonSerializer());
-
-            Assert.Equal(DifficultyJsonConverter.DifficultyValues[expected], stringWriter.ToString());
+            string actual = JsonConvert.SerializeObject(expected, new DifficultyJsonConverter());
+            Assert.Equal(DifficultyJsonConverter.DifficultyValues[expected], actual);
         }
 
         private void FromJson(Difficulty expected)
         {
             string expectedValue = DifficultyJsonConverter.DifficultyValues[expected];
             string json = $"'{expectedValue}'";
-
             var actual = JsonConvert.DeserializeObject<Difficulty>(json, new DifficultyJsonConverter());
-
             Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void WriteJsonTrivial()
+        {
+            ToJson(Difficulty.Trivial);
+        }
+
+        [Fact]
+        public void WriteJsonEasy()
+        {
+            ToJson(Difficulty.Easy);
+        }
+
+        [Fact]
+        public void WriteJsonMedium()
+        {
+            ToJson(Difficulty.Medium);
+        }
+
+        [Fact]
+        public void WriteJsonHard()
+        {
+            ToJson(Difficulty.Hard);
         }
 
         [Fact]
