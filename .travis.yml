@@ -1,0 +1,8 @@
+language: csharp
+solution: Trellabit.net.sln
+mono:
+  - latest
+script:
+  - xbuild /verbosity:normal /t:Clean /p:Configuration=Release Trellabit.net.sln
+  - xbuild /verbosity:normal /t:Build /p:Configuration=Release Trellabit.net.sln
+  - mono ./packages/xunit.runner.console.2.1.0/tools/xunit.console.exe ./Tests/bin/Release/trellabit.tests.dll 
