@@ -1,7 +1,9 @@
 # trellabit.net
 [![Build Status](https://travis-ci.org/DC23/trellabit.net.svg?branch=master)](https://travis-ci.org/DC23/trellabit.net)
-
-
+___
+## Note: This project is dead. I will not be doing any development on it, and it doesn't currently do anything useful.
+If you want to integrate Trello and Habitica tasks, please see [scriptabit](https://github.com/DC23/scriptabit).
+___
 .Net integration between Trello and Habitica. The goal is to provide both
 a command-line interface to useful batch operations (such as batch application
 of labels), and synchronisation between Trello and Habitica. 
